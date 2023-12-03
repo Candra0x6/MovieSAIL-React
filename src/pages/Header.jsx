@@ -37,11 +37,11 @@ export default function HeaderPages() {
         >
           <div className="container">
             <div className="justify-between flex items-center border-b-[1px] border-opacity-10 border-white pb-7">
-              <div className="flex items-center md:gap-11 md:ml-0 ml-5">
+              <div className="flex items-center lg:gap-11 lg:ml-0 ml-5">
                 <a href="/">
                   <img src={LogoIMG} alt="LogoImg" className="w-20 h-20" />
                 </a>
-                <ul className="md:flex p-4 gap-7 font-medium text-slate-300 hidden ">
+                <ul className="lg:flex p-4 gap-7 font-medium text-slate-300 hidden ">
                   {navBarData.map((nav) => (
                     <Navbar key={nav._id} nama={nav} />
                   ))}
@@ -50,7 +50,7 @@ export default function HeaderPages() {
               </div>
               <button
                 onClick={handleMenu}
-                className={`md:hidden fixed right-5 `}
+                className={`lg:hidden fixed right-5 `}
               >
                 <div className={`${menu ? "hidden" : " text-white"}`}>
                   <MenuIcon sx={{ fontSize: 35 }} />
@@ -59,16 +59,16 @@ export default function HeaderPages() {
                   <CloseIcon sx={{ fontSize: 35 }} />
                 </div>
               </button>
-              <div className="hidden md:flex">
+              <div className="hidden lg:flex">
                 <ButtonLogSign />
               </div>
             </div>
             <div
-              className={`fixed z-50 md:hidden backdrop-blur-xl border-[1px] border-slate-300 border-opacity-25 w-[99%]  transition-all duration-1000 ${
+              className={`fixed z-50 lg:hidden backdrop-blur-xl border-[1px] border-slate-300 border-opacity-25 w-[99%]  transition-all duration-1000 ${
                 menu ? "" : "-translate-y-[100vh]"
               }`}
             >
-              <ul className="md:flex p-4 ml-4 flex flex-col gap-7 font-medium text-slate-300 ">
+              <ul className="lg:flex p-4 ml-4 flex flex-col gap-7 font-medium text-slate-300 ">
                 {navBarData.map((nav) => (
                   <Navbar key={nav._id} nama={nav} visibleNav={visibleNav} />
                 ))}
