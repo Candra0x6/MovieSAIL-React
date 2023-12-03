@@ -51,10 +51,10 @@ export default function SliderModal({
       <div
         id="modal"
         onClick={handleNonClick}
-        className={`fixed z-20 backdrop-blur-lg ${showTrailer ? "" : "hidden"}`}
+        className={`fixed z-20 backdrop-blur-lg bg-black ${showTrailer ? "" : "hidden"}`}
       >
         <div className="flex justify-end ">
-          <button onClick={() => setShowTrailer(false)} className="text-black">
+          <button onClick={() => setShowTrailer(false)} className="text-white">
             <CloseIcon />
           </button>
         </div>
@@ -63,11 +63,12 @@ export default function SliderModal({
           controls
           playing={showTrailer}
           url={`https://www.youtube.com/watch?v=${trailer}`}
-          className='h-[40rem] w-[60rem]'
-        />
+          className="z-40"
+          height="30rem"
+          width="45rem"        />
       </div>
       <div
-        className={`md:flex items-center transition-all ease-in-out duration-500 ${
+        className={`lg:flex items-center transition-all ease-in-out duration-500 ${
           showEmptyPage ? "" : "-translate-y-[100vh]"
         } `}
       >
@@ -76,12 +77,12 @@ export default function SliderModal({
             <img
               src={selectedImage}
               alt="selected"
-              className={`lg:w-[22rem] lg:h-[35rem] md:w-[15rem] md:h-[25rem] rounded-md `}
+              className={`lg:w-[22rem] lg:h-[35rem] md:w-[40rem] md:h-[20rem] rounded-md `}
             />
           )}
           <div
             onClick={handleTrailer}
-            className={`px-6 py-3 absolute z-20 rounded-full hover:bg-red-500 transition-all duration-500 bg-transparent ${
+            className={`px-6 py-3 absolute z-10 rounded-full hover:bg-red-500 transition-all duration-500 bg-transparent ${
               showEmptyPage ? "" : "-translate-y-[100vh]"
             }`}
           >
@@ -92,7 +93,7 @@ export default function SliderModal({
           </div>
         </div>
         <div
-          className={`lg:h-[530px] lg:w-[800px] md:h-[60vh] md:w-[53vh] md:mx-0 mx-10 rounded-md bg-white`}
+          className={`lg:h-[530px] lg:w-[800px] md:h-[35vh] md:w-[40vh] md:mx-0 mx-10 rounded-md bg-white`}
         >
           <div className="p-10">
             <div className="flex justify-between">
@@ -159,8 +160,8 @@ export default function SliderModal({
                   </Link>
 
                   <div
-                    className={`lg:px-6 lg:-mr-24 -mr-16 text-center px-4 py-3 lg:py-5 md:px-4 md:-mr-18 md:py-4 left-[78%] 
-                                    shadow-[0_2.8px_2.2px_rgba(0,_0,_0,_0.034),_0_6.7px_5.3px_rgba(0,_0,_0,_0.048),_0_12.5px_10px_rgba(0,_0,_0,_0.06),_0_22.3px_17.9px_rgba(0,_0,_0,_0.072),_0_41.8px_33.4px_rgba(0,_0,_0,_0.086),_0_100px_80px_rgba(0,_0,_0,_0.12)] z-50 rounded-full transition-all bg-green-500`}
+                    className={`lg:px-6 z-0 lg:-mr-24 -mr-16 text-center px-4 py-3 lg:py-5 md:px-4 md:-mr-18 md:py-4 left-[78%] 
+                                    shadow-[0_2.8px_2.2px_rgba(0,_0,_0,_0.034),_0_6.7px_5.3px_rgba(0,_0,_0,_0.048),_0_12.5px_10px_rgba(0,_0,_0,_0.06),_0_22.3px_17.9px_rgba(0,_0,_0,_0.072),_0_41.8px_33.4px_rgba(0,_0,_0,_0.086),_0_100px_80px_rgba(0,_0,_0,_0.12)] rounded-full transition-all bg-green-500`}
                   >
                     <Link to={`/give-review`}>
                       <button className="text-sm text-white mt-2 mx-1 font-medium">

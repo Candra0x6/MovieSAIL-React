@@ -442,8 +442,8 @@ export default function PageMovieId() {
               playing={show}
               ref={trailerVideo}
               url={`https://www.youtube.com/watch?v=${trailer}`}
-              height="60vh"
-              width="100vh"
+              height="30rem"
+              width="50rem"
             />
           </div>
           <div
@@ -458,8 +458,8 @@ export default function PageMovieId() {
               playing={showvideos}
               ref={trailerVideo}
               url={`https://www.youtube.com/watch?v=${videos}`}
-              height="60vh"
-              width="100vh"
+              height="30rem"
+              width="45rem"
             />
           </div>
         </div>

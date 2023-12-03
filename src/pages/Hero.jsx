@@ -83,19 +83,19 @@ useEffect(() => {
   };
 
   return (
-    <div className="justify-center items-center overflow-hidden flex sticky ">
+    <div className="justify-center items-center overflow-hidden flex sticky mt-20">
       <div className="container">
         <div className="absolute bg-[#812DE2] bg-opacity-30 top-40 blur-[100px] lg:w-[50vh] lg:h-[20vh] w-[40vh] h-[10vh] z-0 right-0 rounded-full"></div>
         <div className="absolute -left-40 bottom-[40%] bg-[#423EE0] bg-opacity-20 blur-[100px] z-10 w-[50vh] h-[70vh] rounded-full "></div>
         <div className="absolute left-[40%] bottom-[38%] bg-[#3EE0D6] bg-opacity-30 blur-[100px] z-10 w-[30vh] h-[20vh] rounded-full "></div>
         <div className="absolute right-0 bottom-28 bg-[#423EE0] bg-opacity-30 blur-[100px] z-10 w-[30vh] h-[40vh] rounded-full "></div>
         <div className="z-20 flex flex-col">
-          <div className="flex z-20 flex-col md:flex-row gap-5 md:flex font-medium justify-center md:justify-between items-center">
+          <div className="flex z-20 flex-col lg:flex-row gap-5 lg:flex font-medium justify-center lg:justify-between items-center">
             <div>
               <h2 className="text-white text-lg">Discover Movies</h2>
             </div>
             <div>
-              <ul className="text-white items-center text-md  flex gap-5">
+              <ul className="text-white items-center text-lg  flex gap-5">
                 {filterList.map((val, id) => (
                   <li
                     key={val._id}
@@ -122,24 +122,24 @@ useEffect(() => {
                   type="text"
                   placeholder="Search something here...."
                   onChange={({ target }) => handleFilter(target.value)}
-                  className={`font-thin py-2 md:px-10 px-20 sm:px-28 bg-gray-300 bg-opacity-10 text-white rounded-full`}
+                  className={`font-thin py-2 lg:px-10 px-20 sm:px-28 bg-gray-300 bg-opacity-10 text-white rounded-full`}
                 />
               </div>
             </div>
           </div>
-          <div className="flex z-20 flex-wrap md:gap-[37px] justify-center gap-x-5">
+          <div className="flex z-20 flex-wrap lg:gap-[37px] justify-center gap-x-5">
             {
                 isLoading && <SkeletonLoading cards={12} />
             }          
             {dataMovies.slice(0, 12).map((val, key) => (
                 <div key={key} className="mt-10 w-56">
                   <Link to={`/movie/${val.id}`}>
-                    <div className="rounded-md w-[14rem] h-[20rem] shadow-lg overflow-hidden">
+                    <div className="rounded-lg w-[14rem] h-[20rem] shadow-lg overflow-hidden">
                       <img
                       alt="poster movie"
                         src={`${process.env.REACT_APP_IMG_URL}${val.poster_path}`}
                         key={key}
-                        className="hover:scale-110 transition-all duration-500 w-full cursor-pointer h-full rounded-md"
+                        className="hover:scale-110 transition-all duration-500 w-full cursor-pointer h-full rounded-lg"
                       />
                     </div>
                   </Link>
@@ -165,7 +165,7 @@ useEffect(() => {
           </div>
           <Link to={`/movie/all-movie`}>
             <div className="flex w-full justify-center mt-5">
-              <button className="px-11 py-3 md:w-auto rounded-full text-sm text-white bg-[#DC2064] hover:bg-[#c61858]">
+              <button className="px-11 py-3 lg:w-auto rounded-full text-sm text-white bg-[#DC2064] hover:bg-[#c61858]">
                 See All Movie
               </button>
             </div>

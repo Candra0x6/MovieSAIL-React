@@ -8,7 +8,7 @@ export default function EpisodesPage({
     <>
       <div className="mt-4 pt-2 border-t-[1px] mx-10 text-white border-slate-500 flex flex-col">
         <div className="flex justify-between mt-5 ">
-          <div className="flex flex-col w-[70vh] ">
+          <div className="flex flex-col w-40 ">
             <h1 className="font-bold text-base">
               Crew {dataDetailEpisode.crew.length}
             </h1>
@@ -27,7 +27,7 @@ export default function EpisodesPage({
           </div>
           <div className="flex flex-col justify-center w-auto">
             <h1 className="font-medium mb-2">Guest Starts</h1>
-            <div className="flex flex-wrap gap-10 ">
+            <div className="flex flex-wrap lg:w-full w-[30%] gap-10 ">
               {dataDetailEpisode.guest_stars.length === 0
                 ? dataDetailEpisode.cast.map((val, id) => (
                     <div key={id} className="flex w-[10rem] items-center">

@@ -32,7 +32,7 @@ const {isLoading, TopPeopleData} = UsePopularPeople()
 
         <div className="flex items-end justify-center sm:gap-x-5">
           <>
-            <div className="md:h-[30vh] md:w-[80vh] rotate-[17deg] w-[20vh] h-[20vh] bg-opacity-30 bg-[#423EE0] blur-[100px] z-0 absolute"></div>
+            <div className="lg:h-[30vh] lg:w-[80vh] rotate-[17deg] w-[40vh] h-[25vh] bg-opacity-30 bg-[#423EE0] blur-[100px] z-0 absolute"></div>
             <div className="absolute bg-[#812DE2] bg-opacity-50 blur-[100px] lg:w-[30vh] lg:h-[20vh] w-[40vh] h-[10vh] z-0 rounded-full right-0 bottom-[30%]"></div>
             {
               isLoading && <Loading /> 
@@ -40,7 +40,7 @@ const {isLoading, TopPeopleData} = UsePopularPeople()
             {TopPeopleData.slice(1, 2).map((val2, id) => (
               <div key={val2.id} className="flex flex-col mx-1 z-10">
                 <Link to={`/person/${val2.id}`}>
-                  <div className="flex flex-col items-center justify-end shadow-2xl shadow-blue-900 w-[13vh] h-[13vh] sm:w-[17vh] sm:h-[17vh] lg:w-[22vh] lg:h-[22vh] 2xl:h-[30vh] 2xl:w-[30vh] bg-blue-400 rounded-full">
+                  <div className="flex flex-col items-center justify-end shadow-2xl shadow-blue-900 w-[13vh] h-[13vh] lg:w-[22vh] lg:h-[22vh] 2xl:h-[30vh] 2xl:w-[30vh] bg-blue-400 rounded-full">
                     <img
                     alt="people profile"
                       src={`${process.env.REACT_APP_IMG_URL}${val2.profile_path}`}
@@ -70,7 +70,7 @@ const {isLoading, TopPeopleData} = UsePopularPeople()
               >
                 <img src={Crown} alt='crown' className="w-10 h-10 mb-2" />
                 <Link to={`/person/${val1.id}`}>
-                  <div className="flex flex-col items-center z-10 justify-end shadow-2xl shadow-yellow-900 cursor-pointer w-[17vh] h-[17vh] sm:w-[22vh] sm:h-[22vh] lg:w-[29vh] lg:h-[29vh] 2xl:h-[40vh] 2xl:w-[40vh] bg-yellow-400 rounded-full">
+                  <div className="flex flex-col items-center z-10 justify-end shadow-2xl shadow-yellow-900 cursor-pointer w-[17vh] h-[17vh] lg:w-[29vh] lg:h-[29vh] 2xl:h-[40vh] 2xl:w-[40vh] bg-yellow-400 rounded-full">
                     <img
                     alt="profile top 1"
                       src={`${process.env.REACT_APP_IMG_URL}${val1.profile_path}`}
@@ -79,9 +79,9 @@ const {isLoading, TopPeopleData} = UsePopularPeople()
                   </div>
                 </Link>
                 <img
-                alt="profil people "
+                alt="show line "
                   src={show}
-                  className="brightness-200 contrast-0 w-[50%] opacity-20 xl:top-20 md:top-32 top-40 absolute z-0"
+                  className="brightness-200 contrast-0 w-[50%] opacity-20 xl:top-20 lg:top-32 top-40 absolute z-0"
                 />
                 <div className=" text-white text-lg flex flex-col items-center">
                   <h1 className="bg-yellow-400 z-10 -mt-5 text-black rounded-full px-4  py-1 items-center">
@@ -101,7 +101,7 @@ const {isLoading, TopPeopleData} = UsePopularPeople()
             {TopPeopleData.slice(2, 3).map((val3, id) => (
               <div key={val3.id} className="flex flex-col z-10">
                 <Link to={`/person/${val3.id}`}>
-                  <div className="flex flex-col items-center justify-end shadow-2xl w-[13vh] h-[13vh] sm:w-[17vh] sm:h-[17vh] lg:w-[22vh] lg:h-[22vh] 2xl:h-[30vh] 2xl:w-[30vh] shadow-purple-900 bg-purple-400 rounded-full">
+                  <div className="flex flex-col items-center justify-end shadow-2xl w-[13vh] h-[13vh] lg:w-[22vh] lg:h-[22vh] 2xl:h-[30vh] 2xl:w-[30vh] shadow-purple-900 bg-purple-400 rounded-full">
                     <img
                     alt="profile top 3"
                       src={`${process.env.REACT_APP_IMG_URL}${val3.profile_path}`}

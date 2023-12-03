@@ -27,7 +27,7 @@ function Search() {
 
     return (
         <>
-        <div className="flex md:ml-0 ml-7">
+        <div className="flex lg:ml-0 ml-7">
             <div onClick={handleClickSearch} className={`p-2 z-10 duration-500 rounded-full ${click ? 'bg-transparent sm:translate-x-0 translate-x-[8.5rem]' : ' bg-gray-300 bg-opacity-10'}`}>
                 <SearchIcon sx={{ fontSize: 25 }} className="text-white cursor-pointer " />
             </div>

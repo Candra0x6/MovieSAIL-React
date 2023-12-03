@@ -16,8 +16,8 @@ export default function DiscoverTv({
   return (
     <>
     <ToastContainer />
-    <div className="flex flex-col">
-    <div className="flex flex-col z-20 md:flex-row gap-5 mt-20 md:flex justify-center md:justify-between items-center">
+    <div className="flex flex-col mt-20">
+    <div className="flex flex-col z-20 lg:flex-row gap-5 mt-20 lg:flex justify-center lg:justify-between items-center">
         <h1 className="font-medium text-lg text-white"> Discover Tv Series</h1>
         <FIlterDiscoverTv
           setSortTv={setSortTv}
@@ -28,19 +28,19 @@ export default function DiscoverTv({
           searchTv={searchTv}
         />
       </div>
-      <div className="flex z-20 flex-wrap md:gap-[37px] justify-center gap-x-5">
+      <div className="flex z-20 flex-wrap lg:gap-[37px] justify-center gap-x-5">
       {
                 isLoadind && <SkeletonLoading cards={12} />
             }   
         {tvSeries.slice(0, 12).map((val, key) => (
           <div key={key} className="mt-10 w-56">
             <Link to={`/tv/${val.id}`}>
-              <div className="rounded-md w-[14rem] h-[20rem] shadow-lg overflow-hidden">
+              <div className="rounded-lg w-[14rem] h-[20rem] shadow-lg overflow-hidden">
                 <img
                   alt="tv poster"
                   src={`${process.env.REACT_APP_IMG_URL}${val.poster_path}`}
                   key={key}
-                  className="hover:scale-110 transition-all duration-500 w-full cursor-pointer h-full rounded-md"
+                  className="hover:scale-110 transition-all duration-500 w-full cursor-pointer h-full rounded-lg"
                 />
               </div>
             </Link>

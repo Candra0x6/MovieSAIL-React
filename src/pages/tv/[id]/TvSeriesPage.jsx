@@ -156,7 +156,7 @@ export default function TvSeriesPage() {
         <div className="absolute top-64 left-40 bg-[#3EE0D6] bg-opacity-40 blur-[100px] z-0 w-[30vh] h-[30vh]  rounded-full "></div>
         <div className="absolute top-1/2 -right-20 bg-[#812DE2] bg-opacity-40 blur-[100px] z-0 w-[30vh] h-[50vh]  rounded-full "></div>
         <div className="absolute top-[75%] left-0 bg-[#423EE0] bg-opacity-40 rotate-45 blur-[100px] z-0 w-[30vh] h-[50vh]  rounded-full "></div>
-        <div className="absolute top-[30%] left-1/2 bg-[#3EE0D6] bg-opacity-40 rotate-45 blur-[100px] z-0 w-[30vh] h-[50vh]  rounded-full "></div>
+        <div className="absolute top-[30%] lg:left-1/2 -right-[30rem] bg-[#3EE0D6] bg-opacity-40 rotate-45 blur-[100px] z-0 w-[30vh] h-[50vh]  rounded-full "></div>
 
         <div className={`container mt-10 z-10`}>
           <div className="flex flex-col justify-center">
@@ -207,7 +207,7 @@ export default function TvSeriesPage() {
                 </div>
               ))}
             </div>
-            <div className="flex justify-center mt-20 mb-10 rounded-full">
+            <div className="flex justify-center mt-20 lg:mb-10 rounded-full">
               <button
                 onClick={handleVisible}
                 className={`py-2 px-8 rounded-full ring-2 ring-red-500 hover:bg-red-500 transition-all duration-500 text-white ${
@@ -218,7 +218,7 @@ export default function TvSeriesPage() {
               </button>
             </div>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col lg:mb-0 -mb-20">
             {episode && (
               <div className="flex justify-between">
                 <h1 className="mt-10 font-bold text-lg mb-5 text-white">
@@ -232,7 +232,7 @@ export default function TvSeriesPage() {
             <div className="grid grid-flow-col w-auto overflow-scroll h-[40vh] gap-5 hide-scrollbar">
               {episode?.episodes?.map((episode) => (
                 <div
-                  className="rounded-lg w-[30vh] flex flex-col h-[20vh] group cursor-pointer overflow-hidden"
+                  className="rounded-lg w-[25vh] lg:w-[30vh] lg:h-[20vh] items-center flex flex-col h-[15vh] group cursor-pointer sticky overflow-hidden"
                   key={episode.id}
                 >
                   <div className="w-full group rounded-xl h-full relative group-hover:opacity-70 transition-all duration-500 flex justify-center items-center">
@@ -269,7 +269,7 @@ export default function TvSeriesPage() {
               {getTv?.seasons?.map((val, id) => (
                 <div
                   onMouseEnter={() => setSeasonNum(val.season_number)}
-                  className="rounded-lg w-[12rem] flex flex-col h-[30vh] group cursor-pointer overflow-hidden"
+                  className="rounded-lg lg:w-[12rem] flex flex-col lg:h-[30vh] w-[10vh] h-[20vh] group cursor-pointer overflow-hidden"
                   key={val.id}
                 >
                   <div className="w-full group rounded-xl h-full relative group-hover:opacity-70 transition-all duration-500 flex justify-center items-center">

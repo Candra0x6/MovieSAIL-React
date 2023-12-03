@@ -150,7 +150,7 @@ export default function SliderLanding() {
   };
 
   return (
-    <div className={` md:h-[900px] overflow-hidden h-[700px]`}>
+    <div className={` lg:h-[900px] overflow-hidden h-[700px]`}>
       <div className=" w-full h-full absolute z-0 overflow-hidden">
         <div className="absolute bg-[#812DE2] layer bg-opacity-40 blur-[70px] lg:w-[50vh] lg:h-[20vh] w-[40vh] h-[10vh] z-0 rounded-full -left-20 top-10"></div>
         <div className="absolute right-0 bg-[#423EE0] bg-opacity-40 blur-[100px] -rotate-[20deg] z-0 md:w-[100vh] md:h-[40vh] w-[40vh] h-[20vh] rounded-full top-36"></div>

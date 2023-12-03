@@ -53,12 +53,12 @@ function SeasonsPage() {
           {isLoading && <Loading />}
           {episodes && (
             <>
-              <div className="flex flex-wrap items-start justify-center px-3 mt-40 ">
-                <Link to={`/tv/${id}`}>
-                  <button className="flex md:mx-0 mx-5 justify-center items-center text-white md:py-3 md:px-3 py-3 px-[17vh] md:mb-0 mb-3 mr-10 hover:bg-blue-950 bg-slate-500 backdrop-blur-md bg-opacity-30 rounded-full">
+              <Link to={`/tv/${id}`}>
+                  <button className="flex mt-40  lg:mx-0 mx-5 justify-center items-center text-white lg:py-3 lg:px-3 py-3 px-[17vh] -mb-10 mr-10 hover:bg-blue-950 bg-slate-500 backdrop-blur-md bg-opacity-30 rounded-full">
                     <KeyboardBackspaceIcon fontSize="large" className="" />
                   </button>
                 </Link>
+              <div className="flex flex-wrap items-start justify-center px-3 ">
                 <div className="rounded-md h-[15rem] w-[10rem] flex overflow-hidden bg-cover bg-center shadow-lg">
                   <img
                     alt="poster episode"
@@ -97,7 +97,7 @@ function SeasonsPage() {
             {episodes?.episodes?.map((val, id) => (
               <div
                 id={val.id}
-                className="flex flex-wrap w-[50vh] sm:w-[70vh] md:w-[80vh] lg:w-[110vh] xl:w-[135vh] rounded-3xl drop-shadow-lg overflow-hidden"
+                className="flex flex-wrap w-[50vh] sm:w-[45rem] lg:w-[110vh] xl:w-[135vh] rounded-3xl drop-shadow-lg overflow-hidden"
               >
                 <div key={id} className="flex ">
                   <div
@@ -111,14 +111,14 @@ function SeasonsPage() {
                     <div className="flex"></div>
                   </div>
                   <div
-                    className=" group grid md:grid-flow-col grid-flow-row place-items-center justify-items-center gap-x-5 p-4 h-auto my-auto cursor-pointer"
+                    className=" group grid lg:grid-flow-col grid-flow-row place-items-center justify-items-center gap-x-5 p-4 h-auto my-auto cursor-pointer"
                     onClick={() => {
                       setDetailEpisode(val.episode_number);
                     }}
                   >
                     <img
                       alt="poster season"
-                      className="rounded-lg  w-[40vh] h-[20vh]"
+                      className="rounded-lg w-[40vh] h-[20vh]"
                       src={`${process.env.REACT_APP_IMG_URL}${val.still_path}`}
                     />
                     {dataDetailEpisode.id === val.id ? null : (
