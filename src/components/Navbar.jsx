@@ -8,7 +8,6 @@ export default function Navbar({ nama, id, visibleNav }) {
         }
     };
 
-
     return (
         <li>
             <a onClick={() => scrollTo} className={`scroll-smooth hover:underline hover:underline-offset-8 flex`} href={nama.link}>
