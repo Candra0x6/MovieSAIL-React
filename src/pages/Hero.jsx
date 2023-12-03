@@ -164,7 +164,7 @@ useEffect(() => {
             
           </div>
           <Link to={`/movie/all-movie`}>
-            <div className="flex w-full justify-center mt-5">
+            <div className="flex w-full justify-center mt-20">
               <button className="px-11 py-3 lg:w-auto rounded-full text-sm text-white bg-[#DC2064] hover:bg-[#c61858]">
                 See All Movie
               </button>
