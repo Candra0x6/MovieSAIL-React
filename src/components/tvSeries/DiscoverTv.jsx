@@ -18,7 +18,7 @@ export default function DiscoverTv({
     <ToastContainer />
     <div className="flex flex-col mt-20">
     <div className="flex flex-col z-20 lg:flex-row gap-5 mt-20 lg:flex justify-center lg:justify-between items-center">
-        <h1 className="font-medium text-lg text-white"> Discover Tv Series</h1>
+        <h1 className="font-medium text-xl text-white"> Discover Tv Series</h1>
         <FIlterDiscoverTv
           setSortTv={setSortTv}
           getTv={getTvSeries}

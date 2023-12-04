@@ -92,7 +92,7 @@ useEffect(() => {
         <div className="z-20 flex flex-col">
           <div className="flex z-20 flex-col lg:flex-row gap-5 lg:flex font-medium justify-center lg:justify-between items-center">
             <div>
-              <h2 className="text-white text-lg">Discover Movies</h2>
+              <h2 className="text-white text-xl">Discover Movies</h2>
             </div>
             <div>
               <ul className="text-white items-center text-lg  flex gap-5">
@@ -122,7 +122,7 @@ useEffect(() => {
                   type="text"
                   placeholder="Search something here...."
                   onChange={({ target }) => handleFilter(target.value)}
-                  className={`font-thin py-2 lg:px-10 px-20 sm:px-28 bg-gray-300 bg-opacity-10 text-white rounded-full`}
+                  className={`font-thin py-2 lg:px-10 px-20 sm:px-20 bg-gray-300 bg-opacity-10 text-white rounded-full`}
                 />
               </div>
             </div>

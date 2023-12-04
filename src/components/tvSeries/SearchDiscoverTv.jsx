@@ -22,7 +22,7 @@ const handleSearch = async (event) => {
                     type='text'
                     onChange={handleSearch}
                     placeholder='Search something here....'
-                    className={`font-thin py-2 md:px-10 px-20 sm:px-28 bg-gray-300 bg-opacity-10 text-white rounded-full`} />
+                    className={`font-thin py-2 lg:px-10 px-20 bg-gray-300 bg-opacity-10 text-white rounded-full`} />
             </div>
         </div>
 
