@@ -8,13 +8,13 @@ import LandingPages from "./pages/LandingPages";
 import PageMovieId from './pages/movie/[id]/pageMovieId';
 import SearchPage from './pages/search/movie/SearchPage';
 import TvSeriesPage from './pages/tv/[id]/TvSeriesPage';
-import Login from './pages/login/Login';
 import SeasonsPage from './pages/tv/[id]/seasons/[seasons_number]/SeasonsPage';
 import AllTvSeriesPage from './pages/tv/alltvseries/AllTvSeriesPage';
 import HeaderPages from './pages/Header';
 import Footer from './pages/Footer';
 import PeoplePage from './pages/people/[id_people]/PeoplePage';
 import { SkeletonTheme } from 'react-loading-skeleton';
+import SignIn from './pages/Auth/login/Sign In';
 
 function App() {
   return (
@@ -29,7 +29,7 @@ function App() {
         <Route path="/movie/all-movie" element={<AllMoviePage />} />
         <Route path="/tv/:id" element={<TvSeriesPage />} />
         <Route path="/tv/:id/season/:seasons_number" element={<SeasonsPage />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/sign-in" element={<SignIn />} />
         <Route path="/give-review" element={<GiveReviewPage />} />
         <Route path="*" element={<Notfound404Page />} />
         <Route path="/tv/all-tv-series" element={<AllTvSeriesPage />} />
