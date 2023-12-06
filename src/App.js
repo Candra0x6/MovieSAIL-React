@@ -15,6 +15,7 @@ import Footer from './pages/Footer';
 import PeoplePage from './pages/people/[id_people]/PeoplePage';
 import { SkeletonTheme } from 'react-loading-skeleton';
 import SignIn from './pages/Auth/login/Sign In';
+import SignUp from './pages/Auth/register/Sign Up';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/tv/:id" element={<TvSeriesPage />} />
         <Route path="/tv/:id/season/:seasons_number" element={<SeasonsPage />} />
         <Route path="/sign-in" element={<SignIn />} />
+        <Route path="/sign-up" element={<SignUp />} />
         <Route path="/give-review" element={<GiveReviewPage />} />
         <Route path="*" element={<Notfound404Page />} />
         <Route path="/tv/all-tv-series" element={<AllTvSeriesPage />} />

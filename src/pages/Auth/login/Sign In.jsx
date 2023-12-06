@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 export default function SignIn() {
   return (
     <div className='flex-col h-[100vh] flex sticky overflow-hidden bg-[#13123A] justify-center items-center'>
@@ -13,20 +13,18 @@ export default function SignIn() {
             <h1 className='text-lg font-semibold'>Sign In</h1>
             <h2 className='text-xs font-light'>Input your Username & Password</h2>
           </div>
-          <div className="w-full">
-            <h1 className='text-xs font-semibold mb-1'>Username</h1>
-            <input className='rounded-md py-1 pl-5 w-full bg-[#25274C]' placeholder='Username' />
-          </div>
-          <div className="w-full">
-            <h1 className='text-sm font-semibold mb-1'>Password</h1>
-            <input className='rounded-md py-1 w-full pl-5 bg-[#25274C]' placeholder='Password' />
-          </div>
-          <div className="flex text-sm">
-
+          <form action="submmit" className='flex flex-col gap-y-2 w-full'>
+            <label htmlFor="username" className='text-xs font-semibold '>Username</label>
+            <input type="text" className='rounded-md py-1 pl-5 w-full bg-[#25274C]' placeholder='Input Your Username'/>
+            <label htmlFor="password" className='text-xs font-semibold mt-3'>Password</label>
+            <input type="password" className='rounded-md py-1 pl-5 w-full bg-[#25274C]' placeholder='Input Your Password'/>
+          </form>
+          <div className="flex text-sm gap-x-5">
+            <input type="checkbox" name="" id="" className='bg-[#25274C]' />
             <h1>Remember</h1>
           </div>
           <div className="text-center text-xs w-full mt-10">
-            <h1 className=''>Don't have account ? <span className='text-[#C25050] font-bold'>Sign Up</span></h1>
+            <h1 className=''>Don't have account ? <Link to={`/sign-up`}><span className='text-[#C25050] font-bold'>Sign Up</span></Link></h1>
             <h1 className='text-[#C25050] font-semibold'>Forget Password ?</h1>
           </div>
         </div>
