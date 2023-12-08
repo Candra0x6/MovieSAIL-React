@@ -28,7 +28,6 @@ export default function HeaderPages() {
     setMenu(!menu);
   };
   return (
-    <>
       <header id="header">
         <div
           className={`pt-10 fixed w-full justify-center z-50 backdrop-blur-sm flex transition-all duration-500 ${
@@ -78,6 +77,5 @@ export default function HeaderPages() {
           </div>
         </div>
       </header>
-    </>
   );
 }
