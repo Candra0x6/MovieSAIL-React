@@ -5,6 +5,7 @@ import EastIcon from "@mui/icons-material/East";
 import Loading from "../../../components/loading/Loading";
 import { UsePopularTv } from "../../../ApiCall/UsePopular";
 import { UseTvGendre } from "../../../ApiCall/UseGendre";
+import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
 export default function AllTvSeriesPage() {
   const {
     data: Tv,
@@ -49,7 +50,7 @@ export default function AllTvSeriesPage() {
       setFilterGenres((prevIds) => [...prevIds, id]);
     }
   };
-
+console.log(Tv)
   return (
     <div className="flex flex-col items-center sticky overflow-hidden pb-40 bg-[#13123A]">
       <div className="container">
@@ -106,13 +107,20 @@ export default function AllTvSeriesPage() {
                     </span>
                   </div>
                 </div>
-                <div className="mt-2">
-                  <h6 className="text-teal-600 font-mono text-[11px]">
-                    {val.release_date}
-                  </h6>
-                  <h1 className="text-white text-lg font-medium -mt-1">
-                    {val.title}
-                  </h1>
+                <div className="mt-2 flex justify-between">
+                  <div className="">
+                    <h6 className="text-teal-600 font-mono text-[11px]">
+                      {val.first_air_date}
+                    </h6>
+                    <h1 className="text-white text-lg font-medium -mt-1">
+                      {val.name}
+                    </h1>
+                  </div>
+                  <div className="flex items-start mt-2">
+                    <button className=" text-[#DC2064] rounded-full">
+                      <BookmarkAddIcon sx={{ fontSize: 30 }} className="" />
+                    </button>
+                  </div>
                 </div>
               </div>
             </>

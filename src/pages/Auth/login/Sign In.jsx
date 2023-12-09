@@ -5,12 +5,17 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function SignIn() {
-  const [UserName, setUserName] = useState(null);
-  const [Password, setPassword] = useState(null);
-
+  const [UserName, setUserName] = useState('');
+  const [Password, setPassword] = useState('');
+  const [alertInput, setAlertInput] = useState({
+    username: "",
+    password: "",
+  });
   const Session = localStorage.getItem("account");
   const usernameLocal = localStorage.getItem("username");
   const passwordLocal = localStorage.getItem("password");
+  const userTokenID = localStorage.getItem("requestToken");
+
   const FetchAccount = () => {
     const account = async () => {
       try {
@@ -20,13 +25,37 @@ export default function SignIn() {
         const getaccount = account.data;
         getaccount.username = usernameLocal;
         getaccount.password = passwordLocal;
-        console.log(getaccount);
+        getaccount.user_id= userTokenID
         localStorage.setItem("userData", JSON.stringify(getaccount));
       } catch (e) {
         console.log(e);
       }
     };
-    if ((UserName === usernameLocal) & (Password === passwordLocal)) {
+    if (UserName === "") {
+      setAlertInput((prev) => ({
+        ...prev,
+        username: "Username is required",
+      }));
+    } else {
+      setAlertInput((prev) => ({
+        ...prev,
+        username: "",
+      }));
+    }
+
+    if (Password === "") {
+      setAlertInput((prev) => ({
+        ...prev,
+        password: "Password is required",
+      }));
+    } else {
+      setAlertInput((prev) => ({
+        ...prev,
+        password: "",
+      }));
+    }
+
+    if ((UserName === usernameLocal) && (Password === passwordLocal)) {
       account();
       toast.success("Login Succes", {
         position: "bottom-right",
@@ -66,12 +95,14 @@ export default function SignIn() {
           <div className="w-full gap-y-1 md:text-center mb-10">
             <h1 className="text-lg font-semibold">Sign In</h1>
             <h2 className="text-xs font-light">
-              Input your Username & Password
+              Input your Username & Password 
             </h2>
           </div>
           <form action="submmit" className="flex flex-col gap-y-2 w-full">
-            <label htmlFor="username" className="text-xs font-semibold ">
+            <label htmlFor="username" className="text-xs font-semibold flex justify-between ">
               Username
+              <span className="text-red-700">{alertInput.username}</span>
+
             </label>
             <input
               onChange={(e) => setUserName(e.target.value)}
@@ -79,8 +110,10 @@ export default function SignIn() {
               className="rounded-md py-1 pl-5 w-full bg-[#25274C]"
               placeholder="Input Your Username"
             />
-            <label htmlFor="password" className="text-xs font-semibold mt-3">
+            <label htmlFor="password" className="text-xs font-semibold mt-3 flex justify-between">
               Password
+              <span className="text-red-700">{alertInput.password}</span>
+
             </label>
             <input
               type="password"
@@ -89,10 +122,6 @@ export default function SignIn() {
               placeholder="Input Your Password"
             />
           </form>
-          <div className="flex text-sm gap-x-5">
-            <input type="checkbox" name="" id="" className="bg-[#25274C]" />
-            <h1>Remember</h1>
-          </div>
           <button
             onClick={FetchAccount}
             className="py-2 w-1/2 mx-auto rounded-md bg-[#3239b4] mt-10"

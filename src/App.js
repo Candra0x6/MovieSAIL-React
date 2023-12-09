@@ -16,6 +16,7 @@ import PeoplePage from './pages/people/[id_people]/PeoplePage';
 import { SkeletonTheme } from 'react-loading-skeleton';
 import SignIn from './pages/Auth/login/Sign In';
 import SignUp from './pages/Auth/register/Sign Up';
+import UserProfile from './pages/User/Profile/UserProfile';
 
 function App() {
   return (
@@ -36,6 +37,8 @@ function App() {
         <Route path="*" element={<Notfound404Page />} />
         <Route path="/tv/all-tv-series" element={<AllTvSeriesPage />} />
         <Route path="/person/:id" element={<PeoplePage />} />
+        <Route path="/user/profile" element={<UserProfile />} />
+
       </Routes>
       </SkeletonTheme>
       <Footer />

@@ -5,13 +5,20 @@ import DiscoverTv from "../components/tvSeries/DiscoverTv";
 import "react-loading-skeleton/dist/skeleton.css";
 import ErorNetworkPop from "../components/erorNetwork/ErorNetworkPop";
 import SkeletonLoading from "../components/loading/SkeletonLoadingMovie";
-import { UseSearchMovie, } from "../ApiCall/UseSearch";
+import { UseSearchMovie } from "../ApiCall/UseSearch";
 import { UseMovieDataApi } from "..//ApiCall/UseMovieApi";
+import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
 
 export default function Hero() {
-  const { isEror, isLoading, setSortMovie, data : getMovies, setDataMovies, dataMovies} = UseMovieDataApi()
-  const {search : searchMovie} = UseSearchMovie()
-
+  const {
+    isEror,
+    isLoading,
+    setSortMovie,
+    data: getMovies,
+    setDataMovies,
+    dataMovies,
+  } = UseMovieDataApi();
+  const { search: searchMovie } = UseSearchMovie();
 
   const [filterList, setFilterList] = useState([
     {
@@ -35,33 +42,34 @@ export default function Hero() {
   ]);
   const [filterChanged, setFilterChanged] = useState(false);
 
+  const filterMenuDiscover = useCallback(
+    (type) => {
+      if (type === "popular") {
+        setSortMovie(`&sort_by=vote_average.desc`);
+      } else if (type === "upcoming") {
+        setSortMovie(`&sort_by=primary_release_date.desc`);
+      } else {
+        setSortMovie(``);
+      }
+    },
+    [setSortMovie]
+  );
 
-  const filterMenuDiscover = useCallback ((type) => {
-    if (type === 'popular') {
-        setSortMovie(`&sort_by=vote_average.desc`)
-    } else if (type === 'upcoming') {
-        setSortMovie(`&sort_by=primary_release_date.desc`)
-    } else {
-        setSortMovie(``)
+  useEffect(() => {
+    const filtering = filterList.find((item) => item.active);
+    filterMenuDiscover(filtering.type);
+    setFilterChanged(true);
+  }, [filterList, filterMenuDiscover]);
+
+  useEffect(() => {
+    if (filterChanged) {
+      const timerId = setTimeout(() => {
+        getMovies();
+        setFilterChanged(false);
+      }, 300);
+      return () => clearTimeout(timerId);
     }
-},[setSortMovie])
-
-useEffect(() => {
-  const filtering = filterList.find((item) => item.active);
-  filterMenuDiscover(filtering.type);
-  setFilterChanged(true);
-}, [filterList, filterMenuDiscover]);
-
-useEffect(() => {
-  if (filterChanged) {
-    const timerId = setTimeout(() => {
-      getMovies();
-      setFilterChanged(false); 
-    }, 300); 
-    return () => clearTimeout(timerId);
-  }
-
-}, [filterChanged, filterList, getMovies]);
+  }, [filterChanged, filterList, getMovies]);
   if (isEror === true) {
     return <ErorNetworkPop />;
   }
@@ -92,7 +100,12 @@ useEffect(() => {
         <div className="z-20 flex flex-col">
           <div className="flex z-20 flex-col lg:flex-row gap-5 lg:flex font-medium justify-center lg:justify-between items-center">
             <div>
-              <h2 className="text-white text-xl">Discover Movies</h2>
+              <h2 className="text-white text-xl font-semibold">
+                Discover{" "}
+                <span class=" before:absolute before:inset-3.5 before:left-0 before:w-full before:h-1/2 before:bg-sky-700 relative inline-block">
+                  <span class="relative ">Movies</span>
+                </span>
+              </h2>
             </div>
             <div>
               <ul className="text-white items-center text-lg  flex gap-5">
@@ -128,30 +141,29 @@ useEffect(() => {
             </div>
           </div>
           <div className="flex z-20 flex-wrap lg:gap-[37px] justify-center gap-x-5">
-            {
-                isLoading && <SkeletonLoading cards={12} />
-            }          
+            {isLoading && <SkeletonLoading cards={12} />}
             {dataMovies.slice(0, 12).map((val, key) => (
-                <div key={key} className="mt-10 w-56">
+              <div key={key} className="mt-10 w-56">
+                <div className="rounded-lg w-[14rem]  h-[20rem] shadow-lg overflow-hidden">
                   <Link to={`/movie/${val.id}`}>
-                    <div className="rounded-lg w-[14rem] h-[20rem] shadow-lg overflow-hidden">
-                      <img
+                    <img
                       alt="poster movie"
-                        src={`${process.env.REACT_APP_IMG_URL}${val.poster_path}`}
-                        key={key}
-                        className="hover:scale-110 transition-all duration-500 w-full cursor-pointer h-full rounded-lg"
-                      />
-                    </div>
+                      src={`${process.env.REACT_APP_IMG_URL}${val.poster_path}`}
+                      key={key}
+                      className="hover:scale-110 transition-all duration-500 w-full cursor-pointer h-full rounded-lg"
+                    />
                   </Link>
+                </div>
 
-                  <div className="flex items-end justify-end mt-2 -mr-2">
-                    <div className=" absolute py-[2px] text-center items-center px-2 rounded-full bg-yellow-400">
-                      <span className="font-medium text-[12px]">
-                        {val.vote_average}/ 10
-                      </span>
-                    </div>
+                <div className="flex items-end justify-end mt-2 -mr-2">
+                  <div className=" absolute py-[2px] text-center items-center px-2 rounded-full bg-yellow-400">
+                    <span className="font-medium text-[12px]">
+                      {val.vote_average}/ 10
+                    </span>
                   </div>
-                  <div className="mt-2">
+                </div>
+                <div className="mt-2 flex justify-between">
+                  <div className="">
                     <h6 className="text-teal-600 font-mono text-[11px]">
                       {val.release_date}
                     </h6>
@@ -159,9 +171,14 @@ useEffect(() => {
                       {val.title}
                     </h1>
                   </div>
+                  <div className="flex items-start mt-2">
+                    <button className=" text-[#DC2064] rounded-full">
+                      <BookmarkAddIcon sx={{ fontSize: 30 }} className="" />
+                    </button>
+                  </div>
                 </div>
+              </div>
             ))}
-            
           </div>
           <Link to={`/movie/all-movie`}>
             <div className="flex w-full justify-center mt-20">
@@ -171,9 +188,7 @@ useEffect(() => {
             </div>
           </Link>
 
-          <DiscoverTv
-            isLoadind={isLoading}
-          />
+          <DiscoverTv isLoadind={isLoading} />
         </div>
       </div>
     </div>
