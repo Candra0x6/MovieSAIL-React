@@ -7,10 +7,11 @@ import SkeletonLoading from "../loading/SkeletonLoadingMovie";
 import FIlterDiscoverTv from "./FIlterDiscoverTv";
 import SearchDiscoverTv from "./SearchDiscoverTv";
 import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
+import { PostAddFavoriteTv } from "../../ApiCall/UseAddFavorite";
 export default function DiscoverTv({ isLoadind }) {
   const { getTvSeries, setSortTv, setTvSeries, tvSeries } = UseTvSeries();
   const { search: searchTv } = UseSearchTv();
-
+  const {addFavoriteTv} = PostAddFavoriteTv()
   return (
     <>
       <ToastContainer />
@@ -18,8 +19,8 @@ export default function DiscoverTv({ isLoadind }) {
         <div className="flex flex-col z-20 lg:flex-row gap-5 mt-20 lg:flex justify-center lg:justify-between items-center">
           <h2 className="text-white text-xl font-semibold">
             Discover{" "}
-            <span class=" before:absolute before:inset-3.5 before:left-0 before:w-full before:h-1/2 before:bg-sky-700 relative inline-block">
-              <span class="relative ">Tv</span>
+            <span className=" before:absolute before:inset-3.5 before:left-0 before:w-full before:h-1/2 before:bg-sky-700 relative inline-block">
+              <span className="relative ">Tv</span>
             </span>
           </h2>
           <FIlterDiscoverTv setSortTv={setSortTv} getTv={getTvSeries} />
@@ -58,7 +59,9 @@ export default function DiscoverTv({ isLoadind }) {
                 </div>
 
                 <div className="flex items-start mt-2">
-                  <button className=" text-[#DC2064] rounded-full">
+                  <button className=" text-[#DC2064] rounded-full" onClick={()=>{
+                      addFavoriteTv(val.id)
+                      }}>
                     <BookmarkAddIcon sx={{ fontSize: 30 }} className="" />
                   </button>
                 </div>

@@ -5,8 +5,8 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import TwitterIcon from "@mui/icons-material/Twitter";
 export default function Footer() {
   return (
-      <div className="z-40 mx-auto flex bg-[#27294E] flex-col items-center sm:px-6 lg:px-8">
-        <div className="flex flex-col z-40 bg-[#27294E] -mt-20 w-[10rem] h-[10rem] items-center justify-end bg-[27294E] rounded-full">
+      <div className="z-0 mx-auto flex bg-[#27294E] flex-col items-center sm:px-6 lg:px-8">
+        <div className="flex flex-col z-0 bg-[#27294E] -mt-20 w-[10rem] h-[10rem] items-center justify-end bg-[27294E] rounded-full">
           <img
             src={Img}
             className="h-full z-40 w-full rounded-full p-3"

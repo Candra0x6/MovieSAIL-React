@@ -13,7 +13,7 @@ export default function HeaderPages() {
   const [menu, setMenu] = useState(false);
   const [visibleNav, setvisibleNav] = useState(true);
   const [prevNav, setprevNav] = useState(0);
-  const [visibleUserAccount, setVisibleUserAccount] = useState(false)
+  const [visibleUserAccount, setVisibleUserAccount] = useState(false);
   const userData = localStorage.getItem("userData");
 
   useEffect(() => {
@@ -33,13 +33,13 @@ export default function HeaderPages() {
   };
 
   const on = () => {
-    setVisibleUserAccount(!visibleUserAccount)
-  }
+    setVisibleUserAccount(!visibleUserAccount);
+  };
   return (
     <header id="header">
       <div
         className={`pt-10 fixed w-full justify-center z-50 backdrop-blur-sm flex transition-all duration-500 ${
-          visibleNav ? "translate-y-[0%]" : "-translate-y-[100%]"
+          visibleNav ? "translate-y-[0%]" : "-translate-y-[24rem]"
         }`}
       >
         <div className="container">
@@ -66,23 +66,30 @@ export default function HeaderPages() {
 
             {userData ? (
               <div className="flex items-end justify-center text-white sticky">
-                <button onClick={on} className="ring-2 rounded-full ring-white mr-20 md:mr-0 ">
+                <button
+                  onClick={on}
+                  className="ring-2 rounded-full ring-white mr-20 md:mr-0 "
+                >
                   <PersonIcon sx={{ fontSize: 45 }} className="p-2" />
-                </button>   
-                    <div className={`absolute top-20 bg-[#25274C] duration-300 transition-all  ${visibleUserAccount ? 'translate-y-0 opacity-100  flex flex-col' : 'opacity-0 translate-x-[15rem]'}`}>
-                  <ul className="flex flex-col text-center gap-y-3 py-5 px-10 text-white">
+                </button>
+                <div
+                  className={`absolute top-20 bg-transparent border-2 border-opacity-10 backdrop-blur-md border-white duration-500 ease-out transition-all  ${
+                    visibleUserAccount
+                      ? "translate-y-0 opacity-100  flex flex-col"
+                      : "opacity-0 -translate-y-[15rem]"
+                  }`}
+                >
+                  <ul className="flex flex-col text-center gap-y-3 py-5 px-10 text-slate-300 ">
                     <Link to={`/user/profile`}>
-                    <li className="border-b-[1px] border-white pb-2">
-                      Profile
-                    </li>
+                      <li className="border-b-[1px] border-white pb-2">
+                        Profile
+                      </li>
                     </Link>
-                   <Link to={`/user/setting`}>
-                   <li className="pb-2">
-                      Setting
-                    </li>
-                   </Link>
+                    <Link to={`/user/setting`}>
+                      <li className="pb-2">Setting</li>
+                    </Link>
                   </ul>
-                </div>      
+                </div>
               </div>
             ) : (
               <div className="hidden lg:flex">
@@ -99,9 +106,8 @@ export default function HeaderPages() {
               {navBarData.map((nav) => (
                 <Navbar key={nav._id} nama={nav} visibleNav={visibleNav} />
               ))}
-              
-                <ButtonLogSign />
-      
+
+              <ButtonLogSign />
             </ul>
           </div>
         </div>

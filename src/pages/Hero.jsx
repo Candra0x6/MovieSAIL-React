@@ -8,8 +8,12 @@ import SkeletonLoading from "../components/loading/SkeletonLoadingMovie";
 import { UseSearchMovie } from "../ApiCall/UseSearch";
 import { UseMovieDataApi } from "..//ApiCall/UseMovieApi";
 import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
+import { PostAddFavoriteMovie } from "../ApiCall/UseAddFavorite";
+import { ToastContainer } from "react-toastify";
 
 export default function Hero() {
+ const {AddFavorite} = PostAddFavoriteMovie()
+ 
   const {
     isEror,
     isLoading,
@@ -89,9 +93,11 @@ export default function Hero() {
       }))
     );
   };
+  
 
   return (
-    <div className="justify-center items-center overflow-hidden flex sticky mt-20">
+    <div className="justify-center items-center overflow-hidden flex sticky pt-10 mt-20">
+      <ToastContainer />
       <div className="container">
         <div className="absolute bg-[#812DE2] bg-opacity-30 top-40 blur-[100px] lg:w-[50vh] lg:h-[20vh] w-[40vh] h-[10vh] z-0 right-0 rounded-full"></div>
         <div className="absolute -left-40 bottom-[40%] bg-[#423EE0] bg-opacity-20 blur-[100px] z-10 w-[50vh] h-[70vh] rounded-full "></div>
@@ -102,14 +108,14 @@ export default function Hero() {
             <div>
               <h2 className="text-white text-xl font-semibold">
                 Discover{" "}
-                <span class=" before:absolute before:inset-3.5 before:left-0 before:w-full before:h-1/2 before:bg-sky-700 relative inline-block">
-                  <span class="relative ">Movies</span>
+                <span className=" before:absolute before:inset-3.5 before:left-0 before:w-full before:h-1/2 before:bg-sky-700 relative inline-block">
+                  <span className="relative ">Movies</span>
                 </span>
               </h2>
             </div>
             <div>
               <ul className="text-white items-center text-lg  flex gap-5">
-                {filterList.map((val, id) => (
+                {filterList.map((val) => (
                   <li
                     key={val._id}
                     className={`cursor-pointer pb-2 ${
@@ -172,7 +178,9 @@ export default function Hero() {
                     </h1>
                   </div>
                   <div className="flex items-start mt-2">
-                    <button className=" text-[#DC2064] rounded-full">
+                    <button className=" text-[#DC2064] rounded-full" onClick={()=>{
+                      AddFavorite(val.id)
+                      }}>
                       <BookmarkAddIcon sx={{ fontSize: 30 }} className="" />
                     </button>
                   </div>
