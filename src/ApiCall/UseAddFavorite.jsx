@@ -131,7 +131,7 @@ export const PostAddFavoriteTv = () => {
 export const GetFavoriteTv = () => {
     const [favoriteTv, setFavoriteTv] = useState([])
     const sessionID = localStorage.getItem('account')
-
+    console.log(sessionID)
     useEffect(() => {
         const getFavoriteTv = async() => {
             try {
