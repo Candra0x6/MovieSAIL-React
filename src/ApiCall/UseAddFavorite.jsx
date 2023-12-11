@@ -96,7 +96,7 @@ export const PostAddFavoriteTv = () => {
               );
                 const wrapAdd = postAddFavorite.data.success
                 if (wrapAdd === true) {
-                    toast.success("Favorite Succes Added", {
+                    toast.success("Successfully Added to Favorite", {
                         position: "bottom-right",
                         autoClose: 1000,
                         hideProgressBar: true,
@@ -107,7 +107,7 @@ export const PostAddFavoriteTv = () => {
                         theme: "colored",
                         });
                 } else {
-                    toast.error("Fail Added Favorite", {
+                    toast.error("Failed Added to Favorite !", {
                         position: "bottom-right",
                         autoClose: 1000,
                         hideProgressBar: true,

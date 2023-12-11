@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
@@ -57,7 +57,7 @@ export default function SignIn() {
 
     if ((UserName === usernameLocal) && (Password === passwordLocal)) {
       account();
-      toast.success("Login Succes", {
+      toast.success("Login was Successful", {
         position: "bottom-right",
         autoClose: 1000,
         hideProgressBar: true,
@@ -68,7 +68,7 @@ export default function SignIn() {
         theme: "colored",
         });
     } else {
-      toast.error("Username or Password Maybe Incorrect!!", {
+      toast.error("Username or Password Maybe Incorrect !!", {
         position: "bottom-right",
         autoClose: 1000,
         hideProgressBar: true,

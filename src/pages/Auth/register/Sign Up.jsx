@@ -79,7 +79,16 @@ export default function SignUp() {
           );
           const core = session.data.session_id;
           setSession(core);
-
+          toast.success("Account Successfully Registered", {
+            position: "bottom-right",
+            autoClose: 1000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            });
         } catch (e) {
           console.log(e);
         }
