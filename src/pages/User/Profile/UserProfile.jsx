@@ -38,7 +38,7 @@ function UserProfile() {
                 {user && <h1>{user.username}</h1>}
               </div>
             </div>
-            <div className="flex flex-col gap-y-32">
+            <div className="flex flex-col gap-y-32 mx-2">
               <div className="flex flex-col">
                 <h1 className="text-[1.3rem] font-semibold z-10 text-white">
                   Favorite Movie

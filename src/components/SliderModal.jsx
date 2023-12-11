@@ -72,7 +72,7 @@ export default function SliderModal({
           showEmptyPage ? "" : "-translate-y-[100vh]"
         } `}
       >
-        <div className="z-10 md:flex hidden items-center justify-center ">
+        <div className="z-10 lg:flex hidden items-center justify-center ">
           {selectedImage && (
             <img
               src={selectedImage}
