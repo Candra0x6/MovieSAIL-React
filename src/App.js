@@ -17,6 +17,7 @@ import { SkeletonTheme } from 'react-loading-skeleton';
 import SignIn from './pages/Auth/login/Sign In';
 import SignUp from './pages/Auth/register/Sign Up';
 import UserProfile from './pages/User/Profile/UserProfile';
+import UserSetting from './pages/User/Setting/UserSetting';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
         <Route path="/tv/all-tv-series" element={<AllTvSeriesPage />} />
         <Route path="/person/:id" element={<PeoplePage />} />
         <Route path="/user/profile" element={<UserProfile />} />
+        <Route path="/user/setting" element={<UserSetting />} />
 
       </Routes>
       </SkeletonTheme>
