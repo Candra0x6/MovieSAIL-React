@@ -179,7 +179,7 @@ export default function Hero() {
                   </div>
                   <div className="flex items-start mt-2">
                     <button className=" text-[#DC2064] rounded-full" onClick={()=>{
-                      AddFavorite(val.id)
+                      AddFavorite(val.id, true)
                       }}>
                       <BookmarkAddIcon sx={{ fontSize: 30 }} className="" />
                     </button>

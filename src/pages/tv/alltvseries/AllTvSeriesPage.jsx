@@ -6,6 +6,8 @@ import Loading from "../../../components/loading/Loading";
 import { UsePopularTv } from "../../../ApiCall/UsePopular";
 import { UseTvGendre } from "../../../ApiCall/UseGendre";
 import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
+import { PostAddFavoriteTv } from "../../../ApiCall/UseAddFavorite";
+import { ToastContainer } from "react-toastify";
 export default function AllTvSeriesPage() {
   const {
     data: Tv,
@@ -17,7 +19,7 @@ export default function AllTvSeriesPage() {
     setFilterGenres,
   } = UsePopularTv();
   const { genres } = UseTvGendre();
-
+  const {addFavoriteTv} = PostAddFavoriteTv()
   const scrollTop = () => {
     window.scrollTo({
       behavior: "smooth",
@@ -50,9 +52,9 @@ export default function AllTvSeriesPage() {
       setFilterGenres((prevIds) => [...prevIds, id]);
     }
   };
-console.log(Tv)
   return (
     <div className="flex flex-col items-center sticky overflow-hidden pb-40 bg-[#13123A]">
+      <ToastContainer />
       <div className="container">
         <div className="absolute top-0 left-0 bg-[#3EE0D6] bg-opacity-40 blur-[100px] z-0 w-[40vh] h-[30vh]  rounded-full "></div>
         <div className="absolute top-10 left-[15%] bg-[#423EE0] bg-opacity-50 blur-[100px] z-0 w-[50vh] h-[30vh]  rounded-full "></div>
@@ -88,8 +90,8 @@ console.log(Tv)
         <div className="flex flex-wrap md:gap-[37px] justify-center gap-x-5">
           {isLoading && <Loading />}
           {Tv?.map((val, key) => (
-            <>
-              <div className="mt-10 w-56 z-10">
+            
+              <div key={val.id} className="mt-10 w-56 z-10">
                 <Link to={`/tv/${val.id}`}>
                   <div className="rounded-md w-[14rem] h-[20rem] shadow-lg overflow-hidden">
                     <img
@@ -117,13 +119,15 @@ console.log(Tv)
                     </h1>
                   </div>
                   <div className="flex items-start mt-2">
-                    <button className=" text-[#DC2064] rounded-full">
+                    <button className=" text-[#DC2064] rounded-full"  onClick={()=>{
+                      addFavoriteTv(val.id, true)
+                      }}>
                       <BookmarkAddIcon sx={{ fontSize: 30 }} className="" />
                     </button>
                   </div>
                 </div>
               </div>
-            </>
+            
           ))}
         </div>
 

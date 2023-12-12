@@ -60,7 +60,7 @@ export default function DiscoverTv({ isLoadind }) {
 
                 <div className="flex items-start mt-2">
                   <button className=" text-[#DC2064] rounded-full" onClick={()=>{
-                      addFavoriteTv(val.id)
+                      addFavoriteTv(val.id, true)
                       }}>
                     <BookmarkAddIcon sx={{ fontSize: 30 }} className="" />
                   </button>

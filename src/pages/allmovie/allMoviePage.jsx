@@ -6,9 +6,12 @@ import Loading from "../../components/loading/Loading";
 import { UseMovieGendre } from "../../ApiCall/UseGendre";
 import { UsePopularMovie } from "../../ApiCall/UsePopular";
 import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
+import { PostAddFavoriteMovie } from "../../ApiCall/UseAddFavorite";
+import { ToastContainer } from "react-toastify";
 export default function AllMoviePage() {
   const { movie, isLoading, setPage, setFilterGenres, page, filterGenres } =
     UsePopularMovie();
+  const {AddFavorite}=PostAddFavoriteMovie()
   const { genre } = UseMovieGendre();
 
   const scrollTop = () => {
@@ -35,7 +38,6 @@ export default function AllMoviePage() {
     }
     scrollTop();
   };
-  console.log(filterGenres);
 
   const handleFilterGenres = (id) => {
     if (filterGenres.includes(id)) {
@@ -47,6 +49,7 @@ export default function AllMoviePage() {
 
   return (
     <div className="flex flex-col items-center pb-40 sticky overflow-hidden bg-[#13123A]">
+      <ToastContainer />
       <div className="container">
         <div className="absolute top-0 left-0 bg-[#3EE0D6] bg-opacity-40 blur-[100px] z-0 w-[40vh] h-[30vh]  rounded-full "></div>
         <div className="absolute top-10 left-[15%] bg-[#423EE0] bg-opacity-50 blur-[100px] z-0 w-[50vh] h-[30vh]  rounded-full "></div>
@@ -81,8 +84,8 @@ export default function AllMoviePage() {
         <div className="flex flex-wrap md:gap-[37px] justify-center gap-x-5">
           {isLoading && <Loading />}
           {movie?.map((val, key) => (
-            <>
-              <div className="mt-10 z-10 w-56">
+            
+              <div key={val.id} className="mt-10 z-10 w-56">
                 <Link to={`/movie/${val.id}`}>
                   <div className="rounded-md w-[14rem] h-[20rem] shadow-lg overflow-hidden">
                     <img
@@ -110,13 +113,14 @@ export default function AllMoviePage() {
                     </h1>
                   </div>
                   <div className="flex items-start mt-2">
-                    <button className=" text-[#DC2064] rounded-full">
+                    <button className=" text-[#DC2064] rounded-full"  onClick={()=>{
+                      AddFavorite(val.id, true)
+                      }}>
                       <BookmarkAddIcon sx={{ fontSize: 30 }} className="" />
                     </button>
                   </div>
                 </div>
               </div>
-            </>
           ))}
         </div>
 
