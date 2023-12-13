@@ -3,9 +3,20 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 export const PostAddFavoriteMovie = () => {
     const sessionID = localStorage.getItem('account')
-
+   const isLogin = () => {
+    if (sessionID == null) {
+      toast.error("Fail Added, You Must Have an Acount !", {
+        position: "bottom-right",
+        autoClose: 1000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        });    } 
+   } 
     const AddFavorite = async(id, doing) => {
-
         try {
           const postAddFavorite = await axios.post(
             `${process.env.REACT_APP_BASE_URL}/account/20575052/favorite?session_id=${sessionID}&api_key=${process.env.REACT_APP_TMDB_KEY}`,
@@ -60,11 +71,12 @@ export const PostAddFavoriteMovie = () => {
                     });
             }
         } catch (e) {
-          console.log(e)
+         console.log(e)
         }
       }
   return {
     AddFavorite,
+    isLogin
   }
 }
 
@@ -93,8 +105,20 @@ export const GetFavoriteMovie = () => {
 
 
 export const PostAddFavoriteTv = () => {
-
-    const sessionID = localStorage.getItem('account')
+  const isLogin = () => {
+    if (sessionID == null) {
+      toast.error("Fail Added, You Must Have an Acount !", {
+        position: "bottom-right",
+        autoClose: 1000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        });    } 
+   } 
+  const sessionID = localStorage.getItem('account')
         const addFavoriteTv = async(id, doing) => {
             try {
               const postAddFavorite = await axios.post(
@@ -157,6 +181,7 @@ export const PostAddFavoriteTv = () => {
           }
   return {
     addFavoriteTv,
+    isLogin
   }
 }
 

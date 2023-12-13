@@ -6,12 +6,10 @@ import { UseTvSeries } from "../../ApiCall/UseTvSeries";
 import SkeletonLoading from "../loading/SkeletonLoadingMovie";
 import FIlterDiscoverTv from "./FIlterDiscoverTv";
 import SearchDiscoverTv from "./SearchDiscoverTv";
-import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
-import { PostAddFavoriteTv } from "../../ApiCall/UseAddFavorite";
+import { AddFavoriteButtonTv } from "../AddFavoriteButton";
 export default function DiscoverTv({ isLoadind }) {
   const { getTvSeries, setSortTv, setTvSeries, tvSeries } = UseTvSeries();
   const { search: searchTv } = UseSearchTv();
-  const {addFavoriteTv} = PostAddFavoriteTv()
   return (
     <>
       <ToastContainer />
@@ -57,14 +55,7 @@ export default function DiscoverTv({ isLoadind }) {
                     {val.name}
                   </h1>
                 </div>
-
-                <div className="flex items-start mt-2">
-                  <button className=" text-[#DC2064] rounded-full" onClick={()=>{
-                      addFavoriteTv(val.id, true)
-                      }}>
-                    <BookmarkAddIcon sx={{ fontSize: 30 }} className="" />
-                  </button>
-                </div>
+            <AddFavoriteButtonTv id={val.id} />
               </div>
             </div>
           ))}

@@ -7,6 +7,8 @@ import StarIcon from "@mui/icons-material/Star";
 import ReactPlayer from "react-player";
 import Loading from "../../../components/loading/Loading";
 import { UseMoviebyID } from "../../../ApiCall/UseDatabyID";
+import { AddFavoriteButtonMovie } from "../../../components/AddFavoriteButton";
+import { ToastContainer } from "react-toastify";
 
 export default function PageMovieId() {
   
@@ -67,6 +69,7 @@ export default function PageMovieId() {
       {isLoading && <Loading />}
       <div className="flex justify-center bg-gradient-to-t from-[#13123A] via-[#13123A] to-transparent">
         <div className="container">
+          <ToastContainer />
           {movie && (
             <>
               <div className="flex flex-wrap justify-center mt-7 px-3">
@@ -419,13 +422,16 @@ export default function PageMovieId() {
                       </span>
                     </div>
                   </div>
-                  <div className="mt-2">
-                    <h6 className="text-teal-600 font-mono text-[11px]">
+                  <div className="mt-2 flex justify-between">
+                    <div className="flex flex-col">
+                      <h6 className="text-teal-600 font-mono text-[11px]">
                       {val.release_date}
                     </h6>
                     <h1 className="text-white text-lg font-medium -mt-1">
                       {val.title}
                     </h1>
+                    </div>
+                    <AddFavoriteButtonMovie id={val.id} />
                   </div>
                 </div>
               ))}

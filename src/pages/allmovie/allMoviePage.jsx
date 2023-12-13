@@ -5,13 +5,11 @@ import EastIcon from "@mui/icons-material/East";
 import Loading from "../../components/loading/Loading";
 import { UseMovieGendre } from "../../ApiCall/UseGendre";
 import { UsePopularMovie } from "../../ApiCall/UsePopular";
-import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
-import { PostAddFavoriteMovie } from "../../ApiCall/UseAddFavorite";
 import { ToastContainer } from "react-toastify";
+import { AddFavoriteButtonMovie } from "../../components/AddFavoriteButton";
 export default function AllMoviePage() {
   const { movie, isLoading, setPage, setFilterGenres, page, filterGenres } =
     UsePopularMovie();
-  const {AddFavorite}=PostAddFavoriteMovie()
   const { genre } = UseMovieGendre();
 
   const scrollTop = () => {
@@ -112,13 +110,7 @@ export default function AllMoviePage() {
                       {val.title}
                     </h1>
                   </div>
-                  <div className="flex items-start mt-2">
-                    <button className=" text-[#DC2064] rounded-full"  onClick={()=>{
-                      AddFavorite(val.id, true)
-                      }}>
-                      <BookmarkAddIcon sx={{ fontSize: 30 }} className="" />
-                    </button>
-                  </div>
+                  <AddFavoriteButtonMovie id={val.id} />
                 </div>
               </div>
           ))}

@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import Img from "../../../profile.jpg";
 import Loading from "../../../components/loading/Loading";
 import { UseTvbyID } from "../../../ApiCall/UseDatabyID";
+import { ToastContainer } from "react-toastify";
+import { AddFavoriteButtonTv } from "../../../components/AddFavoriteButton";
 export default function TvSeriesPage() {
   const { TvCredits, recommend, episode, isLoading, getTv, id } = UseTvbyID();
   const [show, setShow] = useState(false);
@@ -29,6 +31,7 @@ export default function TvSeriesPage() {
 
   return (
     <>
+    <ToastContainer />
       <div className="flex justify-center sticky overflow-hidden bg-gradient-to-t from-[#13123A] via-[#13123A] to-transparent">
         <div className="container">
           {isLoading && <Loading />}
@@ -184,16 +187,16 @@ export default function TvSeriesPage() {
                   key={key}
                 >
                   <div className="rounded-full w-28 h-24">
-                  <Link to={`/person/${val.id}`}>
-                    <img
-                      src={
-                        val.profile_path
-                          ? `${process.env.REACT_APP_IMG_URL}${val.profile_path}`
-                          : Img
-                      }
-                      alt="cast"
-                      className="w-full cursor-pointer h-full rounded-full"
-                    />
+                    <Link to={`/person/${val.id}`}>
+                      <img
+                        src={
+                          val.profile_path
+                            ? `${process.env.REACT_APP_IMG_URL}${val.profile_path}`
+                            : Img
+                        }
+                        alt="cast"
+                        className="w-full cursor-pointer h-full rounded-full"
+                      />
                     </Link>
                   </div>
                   <div className="text-white text-center ml-2 w-full h-full">
@@ -310,10 +313,7 @@ export default function TvSeriesPage() {
               {recommend &&
                 recommend?.slice(0, 18)?.map((val, key) => (
                   <div className="mt-10 w-56">
-                    <Link
-                      to={`/tv/${val.id}`}
-                     
-                    >
+                    <Link to={`/tv/${val.id}`}>
                       <div className="rounded-md w-[14rem] h-[20rem] shadow-lg overflow-hidden">
                         <img
                           alt="poster"
@@ -331,13 +331,16 @@ export default function TvSeriesPage() {
                         </span>
                       </div>
                     </div>
-                    <div className="mt-2">
-                      <h6 className="text-teal-600 font-mono text-[11px]">
-                        {val.first_air_date}
-                      </h6>
-                      <h1 className="text-white text-lg font-medium -mt-1">
-                        {val.name}
-                      </h1>
+                    <div className="mt-2 flex justify-between">
+                      <div className="flex-col flex">
+                        <h6 className="text-teal-600 font-mono text-[11px]">
+                          {val.first_air_date}
+                        </h6>
+                        <h1 className="text-white text-lg font-medium -mt-1">
+                          {val.name}
+                        </h1>
+                      </div>
+                      <AddFavoriteButtonTv id={val.id} />
                     </div>
                   </div>
                 ))}

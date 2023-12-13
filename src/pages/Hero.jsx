@@ -7,13 +7,11 @@ import ErorNetworkPop from "../components/erorNetwork/ErorNetworkPop";
 import SkeletonLoading from "../components/loading/SkeletonLoadingMovie";
 import { UseSearchMovie } from "../ApiCall/UseSearch";
 import { UseMovieDataApi } from "..//ApiCall/UseMovieApi";
-import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
-import { PostAddFavoriteMovie } from "../ApiCall/UseAddFavorite";
 import { ToastContainer } from "react-toastify";
+import { AddFavoriteButtonMovie } from "../components/AddFavoriteButton";
 
 export default function Hero() {
- const {AddFavorite} = PostAddFavoriteMovie()
- 
+
   const {
     isEror,
     isLoading,
@@ -93,7 +91,6 @@ export default function Hero() {
       }))
     );
   };
-  
 
   return (
     <div className="justify-center items-center overflow-hidden flex sticky pt-10 mt-20">
@@ -177,13 +174,7 @@ export default function Hero() {
                       {val.title}
                     </h1>
                   </div>
-                  <div className="flex items-start mt-2">
-                    <button className=" text-[#DC2064] rounded-full" onClick={()=>{
-                      AddFavorite(val.id, true)
-                      }}>
-                      <BookmarkAddIcon sx={{ fontSize: 30 }} className="" />
-                    </button>
-                  </div>
+                  <AddFavoriteButtonMovie id={val.id} />
                 </div>
               </div>
             ))}

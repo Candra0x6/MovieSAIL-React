@@ -5,9 +5,8 @@ import EastIcon from "@mui/icons-material/East";
 import Loading from "../../../components/loading/Loading";
 import { UsePopularTv } from "../../../ApiCall/UsePopular";
 import { UseTvGendre } from "../../../ApiCall/UseGendre";
-import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
-import { PostAddFavoriteTv } from "../../../ApiCall/UseAddFavorite";
 import { ToastContainer } from "react-toastify";
+import { AddFavoriteButtonTv } from "../../../components/AddFavoriteButton";
 export default function AllTvSeriesPage() {
   const {
     data: Tv,
@@ -19,7 +18,6 @@ export default function AllTvSeriesPage() {
     setFilterGenres,
   } = UsePopularTv();
   const { genres } = UseTvGendre();
-  const {addFavoriteTv} = PostAddFavoriteTv()
   const scrollTop = () => {
     window.scrollTo({
       behavior: "smooth",
@@ -118,13 +116,7 @@ export default function AllTvSeriesPage() {
                       {val.name}
                     </h1>
                   </div>
-                  <div className="flex items-start mt-2">
-                    <button className=" text-[#DC2064] rounded-full"  onClick={()=>{
-                      addFavoriteTv(val.id, true)
-                      }}>
-                      <BookmarkAddIcon sx={{ fontSize: 30 }} className="" />
-                    </button>
-                  </div>
+                 <AddFavoriteButtonTv id={val.id} />
                 </div>
               </div>
             
