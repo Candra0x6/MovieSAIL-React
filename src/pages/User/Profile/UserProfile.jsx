@@ -19,7 +19,7 @@ function UserProfile() {
 
   const getUserData = localStorage.getItem("userData");
   const userData = JSON.parse(getUserData);
-
+  const ProfileUser = localStorage.getItem("profile_user")
   useEffect(() => {
     setUser(userData);
   }, []);
@@ -37,7 +37,7 @@ function UserProfile() {
             <div className="flex flex-col items-center">
               <div className="flex flex-col z-40 bg-[#121139] -mt-[5.3rem] w-[10rem] h-[10rem] items-center justify-end  rounded-full">
                 <img
-                  src={Img}
+                  src={ProfileUser || Img}
                   className="h-full z-40 w-full rounded-full p-3"
                   alt="Profil Creator"
                 />
