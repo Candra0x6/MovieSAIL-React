@@ -19,7 +19,7 @@ function UserProfile() {
 
   const getUserData = localStorage.getItem("userData");
   const userData = JSON.parse(getUserData);
-  const ProfileUser = localStorage.getItem("profile_user")
+  const ProfileUser = localStorage.getItem("profile_user");
   useEffect(() => {
     setUser(userData);
   }, []);
@@ -134,7 +134,6 @@ function UserProfile() {
                             <h1 className="text-white text-lg font-medium -mt-1">
                               {val.name}
                             </h1>
-
                           </div>
                           <div className="flex items-start mt-2">
                             <button

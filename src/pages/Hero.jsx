@@ -11,7 +11,6 @@ import { ToastContainer } from "react-toastify";
 import { AddFavoriteButtonMovie } from "../components/AddFavoriteButton";
 
 export default function Hero() {
-
   const {
     isEror,
     isLoading,

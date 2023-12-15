@@ -4,10 +4,10 @@ import show from "../data/showline.png";
 import { Link } from "react-router-dom";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import Loading from "../components/loading/SliderLoading";
-import UsePopularPeople from "../ApiCall/UsePopularPeople"
+import UsePopularPeople from "../ApiCall/UsePopularPeople";
 
 export default function TopPeople() {
-const {isLoading, TopPeopleData} = UsePopularPeople()
+  const { isLoading, TopPeopleData } = UsePopularPeople();
   const handleGender = (people) => {
     let result = "";
     const genderId = people.gender; // Mengambil nilai gender dari people
@@ -34,15 +34,13 @@ const {isLoading, TopPeopleData} = UsePopularPeople()
           <>
             <div className="lg:h-[30vh] lg:w-[80vh] rotate-[17deg] w-[40vh] h-[25vh] bg-opacity-30 bg-[#423EE0] blur-[100px] z-0 absolute"></div>
             <div className="absolute bg-[#812DE2] bg-opacity-50 blur-[100px] lg:w-[30vh] lg:h-[20vh] w-[40vh] h-[10vh] z-0 rounded-full right-0 bottom-[30%]"></div>
-            {
-              isLoading && <Loading /> 
-            }
+            {isLoading && <Loading />}
             {TopPeopleData.slice(1, 2).map((val2, id) => (
               <div key={val2.id} className="flex flex-col mx-1 z-10">
                 <Link to={`/person/${val2.id}`}>
                   <div className="flex flex-col items-center justify-end shadow-2xl shadow-blue-900 w-[13vh] h-[13vh] lg:w-[22vh] lg:h-[22vh] 2xl:h-[30vh] 2xl:w-[30vh] bg-blue-400 rounded-full">
                     <img
-                    alt="people profile"
+                      alt="people profile"
                       src={`${process.env.REACT_APP_IMG_URL}${val2.profile_path}`}
                       className="w-full h-full rounded-full p-2"
                     />
@@ -68,18 +66,18 @@ const {isLoading, TopPeopleData} = UsePopularPeople()
                 key={val1.id}
                 className="flex flex-col mx-auto z-20 justify-center items-center"
               >
-                <img src={Crown} alt='crown' className="w-10 h-10 mb-2" />
+                <img src={Crown} alt="crown" className="w-10 h-10 mb-2" />
                 <Link to={`/person/${val1.id}`}>
                   <div className="flex flex-col items-center z-10 justify-end shadow-2xl shadow-yellow-900 cursor-pointer w-[17vh] h-[17vh] lg:w-[29vh] lg:h-[29vh] 2xl:h-[40vh] 2xl:w-[40vh] bg-yellow-400 rounded-full">
                     <img
-                    alt="profile top 1"
+                      alt="profile top 1"
                       src={`${process.env.REACT_APP_IMG_URL}${val1.profile_path}`}
                       className="w-full z-10 h-full rounded-full p-2"
                     />
                   </div>
                 </Link>
                 <img
-                alt="show line "
+                  alt="show line "
                   src={show}
                   className="brightness-200 contrast-0 w-[50%] opacity-20 xl:top-20 lg:top-32 top-40 absolute z-0"
                 />
@@ -103,7 +101,7 @@ const {isLoading, TopPeopleData} = UsePopularPeople()
                 <Link to={`/person/${val3.id}`}>
                   <div className="flex flex-col items-center justify-end shadow-2xl w-[13vh] h-[13vh] lg:w-[22vh] lg:h-[22vh] 2xl:h-[30vh] 2xl:w-[30vh] shadow-purple-900 bg-purple-400 rounded-full">
                     <img
-                    alt="profile top 3"
+                      alt="profile top 3"
                       src={`${process.env.REACT_APP_IMG_URL}${val3.profile_path}`}
                       className="w-full h-full rounded-full p-2"
                     />
