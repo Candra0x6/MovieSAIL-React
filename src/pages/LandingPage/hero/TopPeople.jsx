@@ -1,10 +1,10 @@
 import React from "react";
-import Crown from "../data/crown.png";
-import show from "../data/showline.png";
+import Crown from "../../../data/crown.png";
+import show from "../../../data/showline.svg";
 import { Link } from "react-router-dom";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import Loading from "../components/loading/SliderLoading";
-import UsePopularPeople from "../ApiCall/UsePopularPeople";
+import Loading from "../../../components/loading/SliderLoading";
+import UsePopularPeople from "../../../ApiCall/UsePopularPeople";
 
 export default function TopPeople() {
   const { isLoading, TopPeopleData } = UsePopularPeople();
@@ -151,10 +151,12 @@ export default function TopPeople() {
                   </div>
                 </div>
                 <Link to={`/person/${people.id}`}>
-                  <ArrowForwardIosIcon
-                    sx={{ fontSize: 100 }}
-                    className="text-[#626082]"
-                  />
+                  <button aria-label="Navigate to People Biography">
+                    <ArrowForwardIosIcon
+                      sx={{ fontSize: 100 }}
+                      className="text-[#626082]"
+                    />
+                  </button>
                 </Link>
               </div>
             ))}

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
-import SearchIcon from "@mui/icons-material/Search";
 import DiscoverTv from "../tvSeries/DiscoverTv";
 import "react-loading-skeleton/dist/skeleton.css";
 import ErorNetworkPop from "../erorNetwork/ErorNetworkPop";
@@ -9,6 +8,7 @@ import { UseMovieDataApi } from "../../ApiCall/UseMovieApi";
 import { ToastContainer } from "react-toastify";
 import { AddFavoriteButtonMovie } from "../AddFavoriteButton";
 import { UseSearchMovie } from "../../ApiCall/UseSearch";
+import MovieFilteredMenu from "./MovieFilteredMenu";
 
 export default function MovieCard() {
   const {
@@ -20,7 +20,6 @@ export default function MovieCard() {
     dataMovies,
   } = UseMovieDataApi();
   const { search: searchMovie } = UseSearchMovie();
-
   const [filterList, setFilterList] = useState([
     {
       _id: 1,
@@ -41,6 +40,7 @@ export default function MovieCard() {
       active: false,
     },
   ]);
+
   const [filterChanged, setFilterChanged] = useState(false);
 
   const filterMenuDiscover = useCallback(
@@ -75,22 +75,6 @@ export default function MovieCard() {
     return <ErorNetworkPop />;
   }
 
-  const handleFilter = async (q) => {
-    if (q.length > 3) {
-      const query = await searchMovie(q);
-      setDataMovies(query);
-    }
-  };
-
-  const handleFilterClick = (id) => {
-    setFilterList((prevFilterList) =>
-      prevFilterList.map((item) => ({
-        ...item,
-        active: item._id === id ? true : false,
-      }))
-    );
-  };
-
   return (
     <div className="justify-center items-center overflow-hidden flex sticky pt-10 mt-20">
       <ToastContainer />
@@ -100,48 +84,12 @@ export default function MovieCard() {
         <div className="absolute left-[40%] bottom-[38%] bg-[#3EE0D6] bg-opacity-30 blur-[100px] z-10 w-[30vh] h-[20vh] rounded-full "></div>
         <div className="absolute right-0 bottom-28 bg-[#423EE0] bg-opacity-30 blur-[100px] z-10 w-[30vh] h-[40vh] rounded-full "></div>
         <div className="z-20 flex flex-col">
-          <div className="flex z-20 flex-col lg:flex-row gap-5 lg:flex font-medium justify-center lg:justify-between items-center">
-            <div>
-              <h2 className="text-white text-xl font-semibold">
-                Discover{" "}
-                <span className=" before:absolute before:inset-3.5 before:left-0 before:w-full before:h-1/2 before:bg-sky-700 relative inline-block">
-                  <span className="relative ">Movies</span>
-                </span>
-              </h2>
-            </div>
-            <div>
-              <ul className="text-white items-center text-lg  flex gap-5">
-                {filterList.map((val) => (
-                  <li
-                    key={val._id}
-                    className={`cursor-pointer pb-2 ${
-                      val.active ? "border-b-2 border-red-700 text-red-500" : ""
-                    }`}
-                    onClick={() => handleFilterClick(val._id)}
-                  >
-                    {val.name}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="flex z-20">
-              <div className={`p-2 z-10 bg-transparent`}>
-                <SearchIcon
-                  sx={{ fontSize: 25 }}
-                  className="text-[#ffffff63] cursor-pointer "
-                />
-              </div>
-              <div className={`-ml-11`}>
-                <input
-                  type="text"
-                  placeholder="Search something here...."
-                  onChange={({ target }) => handleFilter(target.value)}
-                  className={`font-thin py-2 lg:px-10 px-20 sm:px-20 bg-gray-300 bg-opacity-10 text-white rounded-full`}
-                />
-              </div>
-            </div>
-          </div>
+          <MovieFilteredMenu
+            searchMovie={searchMovie}
+            setDataMovies={setDataMovies}
+            filterList={filterList}
+            setFilterList={setFilterList}
+          />
           <div className="flex z-20 flex-wrap lg:gap-[37px] justify-center gap-x-5">
             {isLoading && <SkeletonLoading cards={12} />}
             {dataMovies.slice(0, 12).map((val, key) => (
@@ -166,7 +114,7 @@ export default function MovieCard() {
                 </div>
                 <div className="mt-2 flex justify-between">
                   <div className="">
-                    <h6 className="text-teal-600 font-mono text-[11px]">
+                    <h6 className="text-[#0FBDB3] font-mono text-[11px]">
                       {val.release_date}
                     </h6>
                     <h1 className="text-white text-lg font-medium -mt-1">

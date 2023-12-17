@@ -4,21 +4,20 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import GiveReviewPage from './pages/giveReview/giveReviewPage';
 import Notfound404Page from './pages/404page/notfound404Page';
 import AllMoviePage from './pages/allmovie/allMoviePage';
-import LandingPages from "./pages/LandingPages";
 import PageMovieId from './pages/movie/[id]/pageMovieId';
 import SearchPage from './pages/search/movie/SearchPage';
 import TvSeriesPage from './pages/tv/[id]/TvSeriesPage';
 import SeasonsPage from './pages/tv/[id]/seasons/[seasons_number]/SeasonsPage';
 import AllTvSeriesPage from './pages/tv/alltvseries/AllTvSeriesPage';
-import HeaderPages from './pages/Header';
-import Footer from './pages/Footer';
 import PeoplePage from './pages/people/[id_people]/PeoplePage';
 import { SkeletonTheme } from 'react-loading-skeleton';
 import SignIn from './pages/Auth/login/Sign In';
 import SignUp from './pages/Auth/register/Sign Up';
 import UserProfile from './pages/User/Profile/UserProfile';
 import UserSetting from './pages/User/Setting/UserSetting';
-
+import LandingPages from './pages/LandingPage/LandingPages';
+import HeaderPages from './pages/LandingPage/header/Header';
+import Footer from './pages/LandingPage/footer/Footer'
 function App() {
   return (
     <>

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import navBarData from "../data/navBarData";
-import Navbar from "../components/Navbar";
-import ButtonLogSign from "../components/ButtonLogSign";
-import Search from "../components/Search";
+import navBarData from "../../../data/navBarData";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-import LogoIMG from "../data/MovieSAILlogo.png";
+import LogoIMG from "../../../data/MovieSAILlogo.png";
 import PersonIcon from "@mui/icons-material/Person";
 import { Link } from "react-router-dom";
+import ButtonLogSign from "../../../components/ButtonLogSign";
+import Navbar from "../../../components/Navbar";
+import Search from "../../../components/Search";
 
 export default function HeaderPages() {
   const [menu, setMenu] = useState(false);
@@ -55,7 +55,12 @@ export default function HeaderPages() {
               </ul>
               <Search />
             </div>
-            <button onClick={handleMenu} className={`lg:hidden fixed right-5 `}>
+            <button
+              id="hamburger menu"
+              aria-label="Hamburger Menu Navbar"
+              onClick={handleMenu}
+              className={`lg:hidden fixed right-5 `}
+            >
               <div className={`${menu ? "hidden" : " text-white"}`}>
                 <MenuIcon sx={{ fontSize: 35 }} />
               </div>
@@ -67,6 +72,7 @@ export default function HeaderPages() {
             {userData ? (
               <div className="flex items-end justify-center text-white sticky">
                 <button
+                  aria-label="Profile Button"
                   onClick={on}
                   className="ring-2 rounded-full ring-white mr-20 md:mr-0 "
                 >

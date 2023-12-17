@@ -1,7 +1,7 @@
 import React from "react";
-import SliderLanding from "../components/SliderLanding";
-import TopPeople from "./TopPeople";
-import Hero from "./Hero";
+import SliderLanding from "../../components/SliderLanding";
+import Hero from "./hero/Hero";
+import TopPeople from "./hero/TopPeople";
 
 export default function LandingPages() {
   return (

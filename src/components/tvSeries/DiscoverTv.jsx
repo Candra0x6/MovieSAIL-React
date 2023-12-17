@@ -48,14 +48,14 @@ export default function DiscoverTv({ isLoadind }) {
               </div>
               <div className="mt-2 flex justify-between">
                 <div className="">
-                  <h6 className="text-teal-600 font-mono text-[11px]">
+                  <h6 className="text-[#0FBDB3] font-mono text-[11px]">
                     {val.first_air_date}
                   </h6>
                   <h1 className="text-white text-lg font-medium -mt-1">
                     {val.name}
                   </h1>
                 </div>
-            <AddFavoriteButtonTv id={val.id} />
+                <AddFavoriteButtonTv id={val.id} />
               </div>
             </div>
           ))}

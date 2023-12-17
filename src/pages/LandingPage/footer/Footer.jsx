@@ -1,5 +1,5 @@
 import React from "react";
-import Img from "../data/createProfil.jpeg";
+import Img from "../../../data/createProfil.jpeg";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import TwitterIcon from "@mui/icons-material/Twitter";

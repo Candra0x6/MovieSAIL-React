@@ -193,7 +193,7 @@ export default function SliderLanding() {
               <img
                 alt="movie / tv poster"
                 src={`${process.env.REACT_APP_IMG_URL}${val.poster_path}`}
-                className="w-80 md:h-auto h-[300px] rounded-md cursor-pointer"
+                className="md:w-80 w-full md:h-auto h-[270px] rounded-md cursor-pointer"
               />
             </div>
           ))}
