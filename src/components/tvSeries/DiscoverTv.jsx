@@ -7,6 +7,8 @@ import SkeletonLoading from "../loading/SkeletonLoadingMovie";
 import FIlterDiscoverTv from "./FIlterDiscoverTv";
 import SearchDiscoverTv from "./SearchDiscoverTv";
 import { AddFavoriteButtonTv } from "../AddFavoriteButton";
+import NotFoundIMG from "../../data/not-found-image.jpg";
+
 export default function DiscoverTv({ isLoadind }) {
   const { getTvSeries, setSortTv, setTvSeries, tvSeries } = UseTvSeries();
   const { search: searchTv } = UseSearchTv();
@@ -32,7 +34,11 @@ export default function DiscoverTv({ isLoadind }) {
                 <div className="rounded-lg w-[14rem] h-[20rem] shadow-lg overflow-hidden">
                   <img
                     alt="tv poster"
-                    src={`${process.env.REACT_APP_IMG_URL}${val.poster_path}`}
+                    src={
+                      val.poster_path
+                        ? `${process.env.REACT_APP_IMG_URL}${val.poster_path}`
+                        : NotFoundIMG
+                    }
                     key={key}
                     className="hover:scale-110 transition-all duration-500 w-full cursor-pointer h-full rounded-lg"
                   />

@@ -7,6 +7,9 @@ import Loading from "../../../components/loading/Loading";
 import { UseTvbyID } from "../../../ApiCall/UseDatabyID";
 import { ToastContainer } from "react-toastify";
 import { AddFavoriteButtonTv } from "../../../components/AddFavoriteButton";
+import NotFoundIMG from "../../../data/not-found-image.jpg";
+import NotFoundIMGLG from "../../../data/notfound-image-long.jpeg";
+
 export default function TvSeriesPage() {
   const { TvCredits, recommend, episode, isLoading, getTv, id } = UseTvbyID();
   const [show, setShow] = useState(false);
@@ -31,7 +34,7 @@ export default function TvSeriesPage() {
 
   return (
     <>
-    <ToastContainer />
+      <ToastContainer />
       <div className="flex justify-center sticky overflow-hidden bg-gradient-to-t from-[#13123A] via-[#13123A] to-transparent">
         <div className="container">
           {isLoading && <Loading />}
@@ -41,7 +44,11 @@ export default function TvSeriesPage() {
                 <div className="rounded-md h-[21rem] w-[15rem] flex overflow-hidden bg-cover bg-center shadow-lg">
                   <img
                     alt="poster"
-                    src={`${process.env.REACT_APP_IMG_URL}${getTv.poster_path}`}
+                    src={
+                      getTv.poster_path
+                        ? `${process.env.REACT_APP_IMG_URL}${getTv.poster_path}`
+                        : NotFoundIMG
+                    }
                     className="hover:scale-110 transition-all duration-500 w-full object-cover object-center h-full rounded-md"
                   />
                 </div>
@@ -186,7 +193,7 @@ export default function TvSeriesPage() {
                   className="flex-col w-32 flex justify-center items-center gap-2"
                   key={key}
                 >
-                  <div className="rounded-full w-28 h-24">
+                  <div className="rounded-full w-[7.2rem] h-28 ">
                     <Link to={`/person/${val.id}`}>
                       <img
                         src={
@@ -243,7 +250,11 @@ export default function TvSeriesPage() {
                       <img
                         alt="epidode"
                         className="rounded-xl group-hover:scale-105 transition-all w-full h-full duration-500 hue-rotate-15 brightness-110"
-                        src={`${process.env.REACT_APP_IMG_URL}${episode.still_path}`}
+                        src={
+                          episode.still_path
+                            ? `${process.env.REACT_APP_IMG_URL}${episode.still_path}`
+                            : NotFoundIMGLG
+                        }
                       />
                     </div>
 
@@ -280,7 +291,11 @@ export default function TvSeriesPage() {
                       <img
                         alt="poster"
                         className="rounded-xl group-hover:scale-105 transition-all w-full h-full duration-500"
-                        src={`${process.env.REACT_APP_IMG_URL}${val.poster_path}`}
+                        src={
+                          val.poster_path
+                            ? `${process.env.REACT_APP_IMG_URL}${val.poster_path}`
+                            : NotFoundIMG
+                        }
                       />
                     </div>
                     <div className="absolute flex text-center group-hover:from-transparent group-hover:via-transparent group-hover:to-transparent group-hover:bg-black group-hover:bg-opacity-50 bg-gradient-to-t from-[#000000] via-[#000000] to-transparent inset-0 transition-all duration-500 translate-y-[50%] group-hover:backdrop-blur-[2px] group-hover:translate-y-0 flex-col items-center z-0 justify-center">
@@ -310,7 +325,7 @@ export default function TvSeriesPage() {
               Recommendation
             </h1>
             <div className="flex flex-wrap md:gap-[37px] justify-center gap-x-5">
-              {recommend &&
+              {recommend ? (
                 recommend?.slice(0, 18)?.map((val, key) => (
                   <div className="mt-10 w-56">
                     <Link to={`/tv/${val.id}`}>
@@ -343,7 +358,10 @@ export default function TvSeriesPage() {
                       <AddFavoriteButtonTv id={val.id} />
                     </div>
                   </div>
-                ))}
+                ))
+              ) : (
+                <h1>Empty Data</h1>
+              )}
             </div>
           </div>
         </div>

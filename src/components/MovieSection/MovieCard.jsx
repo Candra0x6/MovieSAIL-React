@@ -9,6 +9,7 @@ import { ToastContainer } from "react-toastify";
 import { AddFavoriteButtonMovie } from "../AddFavoriteButton";
 import { UseSearchMovie } from "../../ApiCall/UseSearch";
 import MovieFilteredMenu from "./MovieFilteredMenu";
+import NotFoundIMG from "../../data/not-found-image.jpg";
 
 export default function MovieCard() {
   const {
@@ -98,7 +99,11 @@ export default function MovieCard() {
                   <Link to={`/movie/${val.id}`}>
                     <img
                       alt="poster movie"
-                      src={`${process.env.REACT_APP_IMG_URL}${val.poster_path}`}
+                      src={
+                        val.poster_path
+                          ? `${process.env.REACT_APP_IMG_URL}${val.poster_path}`
+                          : NotFoundIMG
+                      }
                       key={key}
                       className="hover:scale-110 transition-all duration-500 w-full cursor-pointer h-full rounded-lg"
                     />

@@ -9,6 +9,7 @@ import Loading from "../../../components/loading/Loading";
 import { UseMoviebyID } from "../../../ApiCall/UseDatabyID";
 import { AddFavoriteButtonMovie } from "../../../components/AddFavoriteButton";
 import { ToastContainer } from "react-toastify";
+import NotFoundIMG from "../../../data/not-found-image.jpg";
 
 export default function PageMovieId() {
   const {
@@ -74,7 +75,11 @@ export default function PageMovieId() {
                 <div className="rounded-md h-[21rem] w-[15rem] flex overflow-hidden bg-cover bg-center shadow-lg">
                   <img
                     alt="Poster movie"
-                    src={`${process.env.REACT_APP_IMG_URL}${movie.poster_path}`}
+                    src={
+                      movie.poster_path
+                        ? `${process.env.REACT_APP_IMG_URL}${movie.poster_path}`
+                        : NotFoundIMG
+                    }
                     className="hover:scale-110 transition-all duration-500 w-full object-cover object-center h-full rounded-md"
                   />
                 </div>
@@ -208,10 +213,14 @@ export default function PageMovieId() {
                 className="flex-col w-32 flex justify-center z-10 items-center gap-2"
               >
                 <Link to={`/person/${val.id}`}>
-                  <div className="rounded-full aspect-[2/1]">
+                  <div className="rounded-full w-[7.2rem] h-28 ">
                     <img
                       alt="profil people"
-                      src={`${process.env.REACT_APP_IMG_URL}${val.profile_path}`}
+                      src={
+                        val.profile_path
+                          ? `${process.env.REACT_APP_IMG_URL}${val.profile_path}`
+                          : Img
+                      }
                       key={key}
                       className="w-full h-full cursor-pointer rounded-full"
                     />
@@ -317,7 +326,7 @@ export default function PageMovieId() {
                       <div className="flex text-white font-medium flex-col items-center">
                         <StarIcon className="text-red-500 shadow-[0_2.8px_2.2px_rgba(0,_0,_0,_0.034),_0_6.7px_5.3px_rgba(0,_0,_0,_0.048),_0_12.5px_10px_rgba(0,_0,_0,_0.06),_0_22.3px_17.9px_rgba(0,_0,_0,_0.072),_0_41.8px_33.4px_rgba(0,_0,_0,_0.086),_0_100px_80px_rgba(0,_0,_0,_0.12)]" />
                         <h1 className="text-[8px] text-red-500">
-                          {val.author_details.rating}
+                          {val.author_details.rating || "Dta kosong"}
                         </h1>
                       </div>
                     </div>
@@ -345,7 +354,8 @@ export default function PageMovieId() {
                       <div className="text-red-500 text-right my-2 font-medium text-xs">
                         <h1>
                           {val.author_details.name ||
-                            val.author_details.username}
+                            val.author_details.username ||
+                            "Data Kosong"}
                         </h1>
                       </div>
                       <div className="bg-[#0e1b43] p-4 -mr-3 md:w-full w-[28vh] rounded-lg shadow-[0_2.8px_2.2px_rgba(0,_0,_0,_0.034),_0_6.7px_5.3px_rgba(0,_0,_0,_0.048),_0_12.5px_10px_rgba(0,_0,_0,_0.06),_0_22.3px_17.9px_rgba(0,_0,_0,_0.072),_0_41.8px_33.4px_rgba(0,_0,_0,_0.086),_0_100px_80px_rgba(0,_0,_0,_0.12)]">
