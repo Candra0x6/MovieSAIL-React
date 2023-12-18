@@ -16,12 +16,9 @@ export default function SliderLanding() {
 
   const NextArrow = ({ onClick }) => {
     return (
-      <div
-        onClick={onClick}
-        className="absolute right-0 z-20 xl:top-[24%] lg:top-[14%] md:top-[18%] top-[15%]"
-      >
+      <div onClick={onClick} className="absolute right-0 z-20">
         <ArrowCircleRightIcon
-          sx={{ fontSize: 70 }}
+          sx={{ fontSize: 60 }}
           className="text-white cursor-pointer "
         />
       </div>
@@ -30,12 +27,9 @@ export default function SliderLanding() {
 
   const PrevArrow = ({ onClick }) => {
     return (
-      <div
-        onClick={onClick}
-        className="absolute lg:top-[14%] xl:top-[24%] md:top-[18%] top-[15%] z-20"
-      >
+      <div onClick={onClick} className="absolute z-20">
         <ArrowCircleLeftIcon
-          sx={{ fontSize: 70 }}
+          sx={{ fontSize: 60 }}
           className="text-white cursor-pointer "
         />
       </div>
@@ -158,11 +152,10 @@ export default function SliderLanding() {
       </div>
 
       <div className="z-20 pt-60">
-        <h1 className="-mt-10 mb-10 text-center font-medium text-2xl text-white">
+        <h1 className="-mt-10 mb-20 text-center font-medium text-2xl text-white">
           Your Weekend Buddy for this Week
         </h1>
-
-        <Slider {...settings} className="">
+        <Slider {...settings} className="flex flex-col justify-center">
           {movie.slice(0, 20).map((val, indx) => (
             <div
               key={indx}
@@ -193,7 +186,7 @@ export default function SliderLanding() {
               <img
                 alt="movie / tv poster"
                 src={`${process.env.REACT_APP_IMG_URL}${val.poster_path}`}
-                className="md:w-80 w-full md:h-auto h-[270px] rounded-md cursor-pointer"
+                className="aspect-2/1 w-full rounded-md cursor-pointer"
               />
             </div>
           ))}
