@@ -11,17 +11,17 @@ import { AddFavoriteButtonMovie } from "../../../components/AddFavoriteButton";
 import { ToastContainer } from "react-toastify";
 
 export default function PageMovieId() {
-  
-  const {Video,
+  const {
+    Video,
     trailer,
     recommend,
     review,
-    Loading : isLoading,
+    Loading: isLoading,
     movie,
     cast,
     videos,
-    setVideos
-  } = UseMoviebyID()
+    setVideos,
+  } = UseMoviebyID();
   const [visreview, setVisreview] = useState(2);
   const [visible, setVisible] = useState(8);
   const [show, setShow] = useState(false);
@@ -47,7 +47,6 @@ export default function PageMovieId() {
     setVisible(cast.casts.length);
   };
 
-  
   const handleNonClick = (inside) => {
     if (inside.target.id === "modal") {
       setShow(!show);
@@ -62,7 +61,6 @@ export default function PageMovieId() {
   const handleVideos = (key) => {
     setVideos(key);
   };
- 
 
   return (
     <>
@@ -74,7 +72,8 @@ export default function PageMovieId() {
             <>
               <div className="flex flex-wrap justify-center mt-7 px-3">
                 <div className="rounded-md h-[21rem] w-[15rem] flex overflow-hidden bg-cover bg-center shadow-lg">
-                  <img alt="Poster movie"
+                  <img
+                    alt="Poster movie"
                     src={`${process.env.REACT_APP_IMG_URL}${movie.poster_path}`}
                     className="hover:scale-110 transition-all duration-500 w-full object-cover object-center h-full rounded-md"
                   />
@@ -171,7 +170,7 @@ export default function PageMovieId() {
       {movie && (
         <div className="absolute -top-2 right-0 -z-10 contrast-75 brightness-150 bg-black">
           <img
-          alt="background"
+            alt="background"
             className="w-[195vh]  lg:h-[47vh] sm:h-[50vh] h-[100vh]  object-fill opacity-20 saturate-200"
             src={`${process.env.REACT_APP_IMG_URL}${movie.backdrop_path}`}
           />
@@ -204,9 +203,12 @@ export default function PageMovieId() {
           </div>
           <div className="flex flex-wrap z-10 justify-center gap-14 overflow-x-auto">
             {cast.casts.slice(0, visible).map((val, key) => (
-              <div key={val.id} className="flex-col w-32 flex justify-center z-10 items-center gap-2">
+              <div
+                key={val.id}
+                className="flex-col w-32 flex justify-center z-10 items-center gap-2"
+              >
                 <Link to={`/person/${val.id}`}>
-                  <div className="rounded-full w-28 h-24">
+                  <div className="rounded-full aspect-[2/1]">
                     <img
                       alt="profil people"
                       src={`${process.env.REACT_APP_IMG_URL}${val.profile_path}`}
@@ -226,9 +228,7 @@ export default function PageMovieId() {
           </div>
           <div className="flex justify-center z-10 mt-20 mb-10 rounded-full">
             <button
-              onClick={handleVisible
-                
-              }
+              onClick={handleVisible}
               className={`py-2 px-8 rounded-full ring-2 ring-red-500 hover:bg-red-500 transition-all duration-500 text-white ${
                 visible === cast.casts.length ? "hidden" : ""
               }`}
@@ -254,7 +254,7 @@ export default function PageMovieId() {
                 >
                   <div className="overflow-hidden">
                     <img
-                    alt="thumbnail video"
+                      alt="thumbnail video"
                       className="rounded-xl group-hover:scale-105 transition-all duration-500"
                       src={`https://img.youtube.com/vi/${val.key}/mqdefault.jpg`}
                     />
@@ -286,7 +286,10 @@ export default function PageMovieId() {
             {review.slice(0, visreview).map((val, id) => (
               <>
                 {id % 2 === 0 && (
-                  <div key={id} className="grid grid-cols-3 z-10 place-items-center">
+                  <div
+                    key={id}
+                    className="grid grid-cols-3 z-10 place-items-center"
+                  >
                     {/* rv 1 */}
                     <div className="flex flex-col items-center z-10 w-auto xl:ml-28 lg:ml-[9rem]">
                       <div
@@ -333,7 +336,10 @@ export default function PageMovieId() {
                 )}{" "}
                 {/* RV 2 */}
                 {id % 2 !== 0 && (
-                  <div key={id} className="grid grid-cols-3 place-items-center z-10">
+                  <div
+                    key={id}
+                    className="grid grid-cols-3 place-items-center z-10"
+                  >
                     <div>j</div>
                     <div className="flex flex-col justify-start xl:w-[50rem] md:w-[25rem]">
                       <div className="text-red-500 text-right my-2 font-medium text-xs">
@@ -399,12 +405,7 @@ export default function PageMovieId() {
             {recommend &&
               recommend.slice(0, 18).map((val, key) => (
                 <div key={val.id} className="mt-10 w-56 z-10">
-                  <Link
-                    to={`/movie/${val.id}`}
-                    onClick={() => {
-                      
-                    }}
-                  >
+                  <Link to={`/movie/${val.id}`} onClick={() => {}}>
                     <div className="rounded-md w-[14rem] h-[20rem] shadow-lg overflow-hidden">
                       <img
                         src={`${process.env.REACT_APP_IMG_URL}${val.poster_path}`}
@@ -425,11 +426,11 @@ export default function PageMovieId() {
                   <div className="mt-2 flex justify-between">
                     <div className="flex flex-col">
                       <h6 className="text-teal-600 font-mono text-[11px]">
-                      {val.release_date}
-                    </h6>
-                    <h1 className="text-white text-lg font-medium -mt-1">
-                      {val.title}
-                    </h1>
+                        {val.release_date}
+                      </h6>
+                      <h1 className="text-white text-lg font-medium -mt-1">
+                        {val.title}
+                      </h1>
                     </div>
                     <AddFavoriteButtonMovie id={val.id} />
                   </div>

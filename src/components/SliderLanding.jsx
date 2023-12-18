@@ -186,7 +186,7 @@ export default function SliderLanding() {
               <img
                 alt="movie / tv poster"
                 src={`${process.env.REACT_APP_IMG_URL}${val.poster_path}`}
-                className="aspect-2/1 w-full rounded-md cursor-pointer"
+                className="aspect-[4/6] w-full rounded-md cursor-pointer"
               />
             </div>
           ))}
